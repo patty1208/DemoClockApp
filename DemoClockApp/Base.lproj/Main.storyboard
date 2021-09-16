@@ -275,7 +275,10 @@
                                         <rect key="frame" x="247.66666666666671" y="0.0" width="97.333333333333343" height="97.333333333333329"/>
                                         <state key="normal" title="開始"/>
                                         <buttonConfiguration key="configuration" style="plain" title="Start" cornerStyle="capsule">
-                                            <backgroundConfiguration key="background"/>
+                                            <backgroundConfiguration key="background" strokeWidth="2" strokeOutset="-2">
+                                                <color key="backgroundColor" red="0.70229732990000004" green="0.77687168120000005" blue="0.74901807310000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                <color key="strokeColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </backgroundConfiguration>
                                             <color key="baseForegroundColor" red="0.40856683249999998" green="0.55765980479999999" blue="0.50195592639999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         </buttonConfiguration>
                                         <connections>
@@ -913,14 +916,14 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="SoundTableViewCell" id="YGe-nz-Z3F" customClass="SoundTableViewCell" customModule="DemoClockApp" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="44.666666030883789" width="375" height="41.666667938232422"/>
+                                <rect key="frame" x="0.0" y="44.666666030883789" width="375" height="40.666667938232422"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="YGe-nz-Z3F" id="nfu-vC-fyv">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="41.666667938232422"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="40.666667938232422"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="鈴聲名字" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rGp-PV-uEz">
-                                            <rect key="frame" x="10" y="10.000000000000002" width="355" height="21.666666666666671"/>
+                                            <rect key="frame" x="10" y="10.000000000000002" width="355" height="20.666666666666671"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
