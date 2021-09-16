@@ -7,6 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C912E53F26E494A50003E9E9 /* EditAlarmTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C912E53E26E494A50003E9E9 /* EditAlarmTableViewController.swift */; };
+		C912E54126E4D3A40003E9E9 /* Alarm.swift in Sources */ = {isa = PBXBuildFile; fileRef = C912E54026E4D3A40003E9E9 /* Alarm.swift */; };
+		C977210826E0B1E200A7CF10 /* TimeZoneListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C977210726E0B1E200A7CF10 /* TimeZoneListTableViewController.swift */; };
+		C977210A26E0B2EC00A7CF10 /* TimeZoneListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C977210926E0B2EC00A7CF10 /* TimeZoneListTableViewCell.swift */; };
+		C977210C26E1C92C00A7CF10 /* StopWatchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C977210B26E1C92C00A7CF10 /* StopWatchTableViewController.swift */; };
+		C977210E26E1CB4A00A7CF10 /* StopwatchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C977210D26E1CB4A00A7CF10 /* StopwatchTableViewCell.swift */; };
+		C980655B26E214AF00D72F29 /* StopWatchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C980655A26E214AF00D72F29 /* StopWatchViewController.swift */; };
+		C980656126E2483A00D72F29 /* AlarmTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C980656026E2483A00D72F29 /* AlarmTableViewCell.swift */; };
+		C980656326E2485700D72F29 /* AlarmTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C980656226E2485700D72F29 /* AlarmTableViewController.swift */; };
 		C9C7EE9D26E07907004F3F93 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9C7EE9C26E07907004F3F93 /* AppDelegate.swift */; };
 		C9C7EE9F26E07907004F3F93 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9C7EE9E26E07907004F3F93 /* SceneDelegate.swift */; };
 		C9C7EEA126E07907004F3F93 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9C7EEA026E07907004F3F93 /* ViewController.swift */; };
@@ -14,9 +23,25 @@
 		C9C7EEA726E07907004F3F93 /* DemoClockApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C9C7EEA526E07907004F3F93 /* DemoClockApp.xcdatamodeld */; };
 		C9C7EEA926E07908004F3F93 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C9C7EEA826E07908004F3F93 /* Assets.xcassets */; };
 		C9C7EEAC26E07908004F3F93 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C9C7EEAA26E07908004F3F93 /* LaunchScreen.storyboard */; };
+		C9EFB67C26E786E50048D46F /* EditAlarmRepeatDayTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9EFB67B26E786E50048D46F /* EditAlarmRepeatDayTableViewController.swift */; };
+		C9EFB67E26E78A6E0048D46F /* RepeatDayTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9EFB67D26E78A6E0048D46F /* RepeatDayTableViewCell.swift */; };
+		C9EFB68026E7A4E00048D46F /* EditAlarmLabelTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9EFB67F26E7A4E00048D46F /* EditAlarmLabelTableViewController.swift */; };
+		C9EFB68226E7B08F0048D46F /* EditAlarmSoundTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9EFB68126E7B08F0048D46F /* EditAlarmSoundTableViewController.swift */; };
+		C9EFB68426E7B0EB0048D46F /* SoundTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9EFB68326E7B0EB0048D46F /* SoundTableViewCell.swift */; };
+		C9F036DA26E350770026DCBC /* TimeZone.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9F036D926E350770026DCBC /* TimeZone.swift */; };
+		C9F23DA226EF744F00033A9E /* LapTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9F23DA126EF744F00033A9E /* LapTime.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		C912E53E26E494A50003E9E9 /* EditAlarmTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditAlarmTableViewController.swift; sourceTree = "<group>"; };
+		C912E54026E4D3A40003E9E9 /* Alarm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alarm.swift; sourceTree = "<group>"; };
+		C977210726E0B1E200A7CF10 /* TimeZoneListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeZoneListTableViewController.swift; sourceTree = "<group>"; };
+		C977210926E0B2EC00A7CF10 /* TimeZoneListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeZoneListTableViewCell.swift; sourceTree = "<group>"; };
+		C977210B26E1C92C00A7CF10 /* StopWatchTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopWatchTableViewController.swift; sourceTree = "<group>"; };
+		C977210D26E1CB4A00A7CF10 /* StopwatchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopwatchTableViewCell.swift; sourceTree = "<group>"; };
+		C980655A26E214AF00D72F29 /* StopWatchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopWatchViewController.swift; sourceTree = "<group>"; };
+		C980656026E2483A00D72F29 /* AlarmTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmTableViewCell.swift; sourceTree = "<group>"; };
+		C980656226E2485700D72F29 /* AlarmTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmTableViewController.swift; sourceTree = "<group>"; };
 		C9C7EE9926E07907004F3F93 /* DemoClockApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DemoClockApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C9C7EE9C26E07907004F3F93 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C9C7EE9E26E07907004F3F93 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -26,6 +51,13 @@
 		C9C7EEA826E07908004F3F93 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C9C7EEAB26E07908004F3F93 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C9C7EEAD26E07908004F3F93 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C9EFB67B26E786E50048D46F /* EditAlarmRepeatDayTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditAlarmRepeatDayTableViewController.swift; sourceTree = "<group>"; };
+		C9EFB67D26E78A6E0048D46F /* RepeatDayTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepeatDayTableViewCell.swift; sourceTree = "<group>"; };
+		C9EFB67F26E7A4E00048D46F /* EditAlarmLabelTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditAlarmLabelTableViewController.swift; sourceTree = "<group>"; };
+		C9EFB68126E7B08F0048D46F /* EditAlarmSoundTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditAlarmSoundTableViewController.swift; sourceTree = "<group>"; };
+		C9EFB68326E7B0EB0048D46F /* SoundTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundTableViewCell.swift; sourceTree = "<group>"; };
+		C9F036D926E350770026DCBC /* TimeZone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeZone.swift; sourceTree = "<group>"; };
+		C9F23DA126EF744F00033A9E /* LapTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LapTime.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -39,6 +71,50 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C980655C26E2182300D72F29 /* StopWatch */ = {
+			isa = PBXGroup;
+			children = (
+				C980655A26E214AF00D72F29 /* StopWatchViewController.swift */,
+				C9F23DA126EF744F00033A9E /* LapTime.swift */,
+				C977210B26E1C92C00A7CF10 /* StopWatchTableViewController.swift */,
+				C977210D26E1CB4A00A7CF10 /* StopwatchTableViewCell.swift */,
+			);
+			path = StopWatch;
+			sourceTree = "<group>";
+		};
+		C980655D26E2183900D72F29 /* WorldClock */ = {
+			isa = PBXGroup;
+			children = (
+				C977210926E0B2EC00A7CF10 /* TimeZoneListTableViewCell.swift */,
+				C977210726E0B1E200A7CF10 /* TimeZoneListTableViewController.swift */,
+				C9F036D926E350770026DCBC /* TimeZone.swift */,
+			);
+			path = WorldClock;
+			sourceTree = "<group>";
+		};
+		C980655E26E2185000D72F29 /* Timer */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Timer;
+			sourceTree = "<group>";
+		};
+		C980655F26E2185900D72F29 /* Alarm */ = {
+			isa = PBXGroup;
+			children = (
+				C912E54026E4D3A40003E9E9 /* Alarm.swift */,
+				C980656026E2483A00D72F29 /* AlarmTableViewCell.swift */,
+				C9EFB67D26E78A6E0048D46F /* RepeatDayTableViewCell.swift */,
+				C9EFB68326E7B0EB0048D46F /* SoundTableViewCell.swift */,
+				C980656226E2485700D72F29 /* AlarmTableViewController.swift */,
+				C912E53E26E494A50003E9E9 /* EditAlarmTableViewController.swift */,
+				C9EFB67B26E786E50048D46F /* EditAlarmRepeatDayTableViewController.swift */,
+				C9EFB67F26E7A4E00048D46F /* EditAlarmLabelTableViewController.swift */,
+				C9EFB68126E7B08F0048D46F /* EditAlarmSoundTableViewController.swift */,
+			);
+			path = Alarm;
+			sourceTree = "<group>";
+		};
 		C9C7EE9026E07907004F3F93 = {
 			isa = PBXGroup;
 			children = (
@@ -58,6 +134,10 @@
 		C9C7EE9B26E07907004F3F93 /* DemoClockApp */ = {
 			isa = PBXGroup;
 			children = (
+				C980655F26E2185900D72F29 /* Alarm */,
+				C980655E26E2185000D72F29 /* Timer */,
+				C980655D26E2183900D72F29 /* WorldClock */,
+				C980655C26E2182300D72F29 /* StopWatch */,
 				C9C7EE9C26E07907004F3F93 /* AppDelegate.swift */,
 				C9C7EE9E26E07907004F3F93 /* SceneDelegate.swift */,
 				C9C7EEA026E07907004F3F93 /* ViewController.swift */,
@@ -140,10 +220,26 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C9EFB68426E7B0EB0048D46F /* SoundTableViewCell.swift in Sources */,
+				C9F036DA26E350770026DCBC /* TimeZone.swift in Sources */,
 				C9C7EEA126E07907004F3F93 /* ViewController.swift in Sources */,
 				C9C7EE9D26E07907004F3F93 /* AppDelegate.swift in Sources */,
+				C977210A26E0B2EC00A7CF10 /* TimeZoneListTableViewCell.swift in Sources */,
+				C980656326E2485700D72F29 /* AlarmTableViewController.swift in Sources */,
 				C9C7EE9F26E07907004F3F93 /* SceneDelegate.swift in Sources */,
+				C980655B26E214AF00D72F29 /* StopWatchViewController.swift in Sources */,
+				C9EFB68026E7A4E00048D46F /* EditAlarmLabelTableViewController.swift in Sources */,
+				C912E53F26E494A50003E9E9 /* EditAlarmTableViewController.swift in Sources */,
+				C9EFB68226E7B08F0048D46F /* EditAlarmSoundTableViewController.swift in Sources */,
+				C980656126E2483A00D72F29 /* AlarmTableViewCell.swift in Sources */,
+				C9F23DA226EF744F00033A9E /* LapTime.swift in Sources */,
+				C9EFB67E26E78A6E0048D46F /* RepeatDayTableViewCell.swift in Sources */,
+				C9EFB67C26E786E50048D46F /* EditAlarmRepeatDayTableViewController.swift in Sources */,
 				C9C7EEA726E07907004F3F93 /* DemoClockApp.xcdatamodeld in Sources */,
+				C977210826E0B1E200A7CF10 /* TimeZoneListTableViewController.swift in Sources */,
+				C977210C26E1C92C00A7CF10 /* StopWatchTableViewController.swift in Sources */,
+				C912E54126E4D3A40003E9E9 /* Alarm.swift in Sources */,
+				C977210E26E1CB4A00A7CF10 /* StopwatchTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -220,7 +316,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -275,7 +371,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
