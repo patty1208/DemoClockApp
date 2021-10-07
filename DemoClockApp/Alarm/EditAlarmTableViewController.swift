@@ -11,63 +11,31 @@ protocol EditAlarmTableViewControllerDelegate {
     // 取消編輯頁面觸發
     func editAlarmTableViewControllerDidCancel(_ controller: EditAlarmTableViewController)
 }
-
 class EditAlarmTableViewController: UITableViewController {
     var delegate: EditAlarmTableViewControllerDelegate?
     var alarm: Alarm?
-    
-    @IBOutlet weak var deleteCell: UITableViewCell!
-    @IBOutlet weak var seperateCell: UITableViewCell!
-    
+    let formatter = DateFormatter()
     @IBOutlet weak var alarmTimeDatePicker: UIDatePicker!
-    
     @IBOutlet weak var alarmRepeatDayLabel: UILabel!
-    
     @IBOutlet weak var alarmNameLabel: UILabel!
-    
     @IBOutlet weak var alarmSoundLabel: UILabel!
-    
-    @IBOutlet weak var alarmIsActiveSwitch: UISwitch!
-    
-    
-    func updateUI(alarm: Alarm){
-        //        let formatter = DateFormatter()
-        //        formatter.dateFormat = "H:m"
-        //        let time = formatter.string(from: alarm.alarmTime)
-        //        alarmTimeDatePicker.setDate(time, animated: true)
-        let weekNames: [week] = [.Sun,.Mon,.Tue,.Wed,.Thur,.Fri,.Sat]
-        print(weekNames[3])
-        var repeatDays = [week]()
-        for key in weekNames {
-            if alarm.repeatDays[key] == true {
-                print(key)
-                repeatDays.append(key) }
-        }
-        if repeatDays.count == 0 {
-            alarmRepeatDayLabel.text = "Never"
-        } else if repeatDays.count == 1 {
-            alarmRepeatDayLabel.text = "Every \(repeatDays[0].rawValue)"
-        } else if repeatDays.count == 7 {
-            alarmRepeatDayLabel.text = "Every day"
-        } else if repeatDays.count == 2 && repeatDays.contains(.Sat) && repeatDays.contains(.Sun) {
-            alarmRepeatDayLabel.text = "Weekends"
-        } else if repeatDays.contains(.Mon) && repeatDays.contains(.Tue) && repeatDays.contains(.Wed) && repeatDays.contains(.Thur) && repeatDays.contains(.Fri) {
-            alarmRepeatDayLabel.text = "WeekDays"
-        } else {
-            var repeatString = ""
-            for i in 0 ... repeatDays.count - 1 {
-                repeatString.append("\(repeatDays[i]) ")
-            }
-            alarmRepeatDayLabel.text = repeatString
-        }
+    @IBOutlet weak var alarmIsSnoozeSwitch: UISwitch!
+    @IBOutlet weak var seperateCell: UITableViewCell!
+    @IBOutlet weak var deleteCell: UITableViewCell!
+    func updateUI(alarm: Alarm?){
+        formatter.dateFormat = "HH:mm"
+        alarmTimeDatePicker.date = formatter.date(from: alarm?.alarmTime ?? "") ?? Date()
+        alarmRepeatDayLabel.text = alarm?.alarmRepeatDaysDescription ?? "Never"
+        alarmNameLabel.text = alarm?.alarmLabel ?? "Alarm"
+        alarmSoundLabel.text = alarm?.alarmSound.rawValue ?? AlarmSoundList.allCases[0].rawValue
+        alarmIsSnoozeSwitch.isOn = alarm?.alarmSnooze ?? true
+        // 刪除鬧鐘選項
+        seperateCell.isHidden = alarm == nil ? true : false
+        deleteCell.isHidden = alarm == nil ? true : false
     }
     override func viewDidLoad() {
-        if let alarm = alarm { updateUI(alarm: alarm) }
-        
         super.viewDidLoad()
-        // 刪除鬧鐘選項
-        deleteCell.isHidden = alarm == nil ? true : false
-        seperateCell.isHidden = alarm == nil ? true : false
+        updateUI(alarm: alarm)
         
         // present modally 向下滑相關
         self.isModalInPresentation = false
@@ -76,44 +44,61 @@ class EditAlarmTableViewController: UITableViewController {
         // 自動推算 row 高度
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = UITableView.automaticDimension
-        
-        tableView.tableFooterView = UIView() // 不顯示沒有資料的分隔線
+        tableView.tableFooterView = UIView()
         tableView.allowsSelection = true
-        
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-        
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
-    
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableView.automaticDimension
     }
-    
     // 取消時返回前一頁, 鬧鐘列表頁面呈現
     @IBAction func back(_ sender: Any) {
         delegate?.editAlarmTableViewControllerDidCancel(self)
         dismiss(animated: true, completion: nil)
     }
-    
     // 改變時間
     @IBAction func changeTime(_ sender: UIDatePicker) {
-        let date = sender.date
-        let dateformatter = DateFormatter()
-        dateformatter.locale = Locale.ReferenceType.system
-        dateformatter.timeZone = TimeZone.ReferenceType.system
-        dateformatter.dateFormat = "h:m a"
-        print(dateformatter.string(from: date))
+        alarm?.alarmTime = formatter.string(from: alarmTimeDatePicker.date)
+    }
+    @IBSegueAction func passRepeatDays(_ coder: NSCoder, sender: Any?, segueIdentifier: String?) -> EditAlarmRepeatDayTableViewController? {
+        let repeatDays: [Week: Bool] = alarm?.repeatDays ?? [.Sun:false,.Mon:false,.Tue:false,.Wed:false,.Thur:false,.Fri:false,.Sat:false]
+        return EditAlarmRepeatDayTableViewController(coder: coder, repeatDays: repeatDays)
+    }
+    @IBSegueAction func passLabelName(_ coder: NSCoder, sender: Any?, segueIdentifier: String?) -> EditAlarmLabelTableViewController? {
+        let alarmLabel = alarm?.alarmLabel ?? "Alarm"
+        return EditAlarmLabelTableViewController(coder: coder, alarmLabel: alarmLabel)
+    }
+    @IBSegueAction func passSound(_ coder: NSCoder, sender: Any?, segueIdentifier: String?) -> EditAlarmSoundTableViewController? {
+        let sound = alarm?.alarmSound ?? AlarmSoundList.allCases[0]
+        return EditAlarmSoundTableViewController(coder: coder, alarmSound: sound)
+    }
+    @IBAction func turnAlarmIsSnoozeSwitch(_ sender: UISwitch) {
+        alarm?.alarmSnooze = sender.isOn
     }
     
+    @IBAction func unwindToEditAlarm(_ unwindSegue: UIStoryboardSegue) {
+        if unwindSegue.identifier == "unwindToEditAlarmFromRepeatDays" {
+            if let sourceViewController = unwindSegue.source as? EditAlarmRepeatDayTableViewController {
+                alarm?.repeatDays = sourceViewController.repeatDays
+            }
+        } else if unwindSegue.identifier == "unwindToEditAlarmFromLabel" {
+            if let sourceViewController = unwindSegue.source as? EditAlarmLabelTableViewController {
+                alarm?.alarmLabel = sourceViewController.alarmName
+            }
+        } else if unwindSegue.identifier == "unwindToEditAlarmFromSound" {
+            if let sourceViewController = unwindSegue.source as? EditAlarmSoundTableViewController {
+                alarm?.alarmSound = sourceViewController.alarmSound
+            }
+        }
+        updateUI(alarm: alarm)
+    }
     
     // MARK: - Navigation
     
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        if segue.identifier == "unwindToAlarmTableViewControllerFromSave"{
+            alarm = Alarm(alarmTime: formatter.string(from: alarmTimeDatePicker.date), repeatDays: alarm?.repeatDays ?? [.Sun:false,.Mon:false,.Tue:false,.Wed:false,.Thur:false,.Fri:false,.Sat:false], alarmLabel: alarmNameLabel.text ?? "Alarm" , alarmSound: alarm?.alarmSound ?? AlarmSoundList.Rader, alarmSnooze: alarmIsSnoozeSwitch.isOn, alarmIsActive: alarm?.alarmIsActive ?? true)
+        }
     }
 }
 

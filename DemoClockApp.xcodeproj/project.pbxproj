@@ -9,9 +9,9 @@
 /* Begin PBXBuildFile section */
 		C912E53F26E494A50003E9E9 /* EditAlarmTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C912E53E26E494A50003E9E9 /* EditAlarmTableViewController.swift */; };
 		C912E54126E4D3A40003E9E9 /* Alarm.swift in Sources */ = {isa = PBXBuildFile; fileRef = C912E54026E4D3A40003E9E9 /* Alarm.swift */; };
+		C9542E2526F32FF700F03A6A /* TimerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9542E2426F32FF700F03A6A /* TimerViewController.swift */; };
 		C977210826E0B1E200A7CF10 /* TimeZoneListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C977210726E0B1E200A7CF10 /* TimeZoneListTableViewController.swift */; };
 		C977210A26E0B2EC00A7CF10 /* TimeZoneListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C977210926E0B2EC00A7CF10 /* TimeZoneListTableViewCell.swift */; };
-		C977210C26E1C92C00A7CF10 /* StopWatchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C977210B26E1C92C00A7CF10 /* StopWatchTableViewController.swift */; };
 		C977210E26E1CB4A00A7CF10 /* StopwatchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C977210D26E1CB4A00A7CF10 /* StopwatchTableViewCell.swift */; };
 		C980655B26E214AF00D72F29 /* StopWatchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C980655A26E214AF00D72F29 /* StopWatchViewController.swift */; };
 		C980656126E2483A00D72F29 /* AlarmTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C980656026E2483A00D72F29 /* AlarmTableViewCell.swift */; };
@@ -35,9 +35,9 @@
 /* Begin PBXFileReference section */
 		C912E53E26E494A50003E9E9 /* EditAlarmTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditAlarmTableViewController.swift; sourceTree = "<group>"; };
 		C912E54026E4D3A40003E9E9 /* Alarm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alarm.swift; sourceTree = "<group>"; };
+		C9542E2426F32FF700F03A6A /* TimerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerViewController.swift; sourceTree = "<group>"; };
 		C977210726E0B1E200A7CF10 /* TimeZoneListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeZoneListTableViewController.swift; sourceTree = "<group>"; };
 		C977210926E0B2EC00A7CF10 /* TimeZoneListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeZoneListTableViewCell.swift; sourceTree = "<group>"; };
-		C977210B26E1C92C00A7CF10 /* StopWatchTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopWatchTableViewController.swift; sourceTree = "<group>"; };
 		C977210D26E1CB4A00A7CF10 /* StopwatchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopwatchTableViewCell.swift; sourceTree = "<group>"; };
 		C980655A26E214AF00D72F29 /* StopWatchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopWatchViewController.swift; sourceTree = "<group>"; };
 		C980656026E2483A00D72F29 /* AlarmTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmTableViewCell.swift; sourceTree = "<group>"; };
@@ -74,10 +74,9 @@
 		C980655C26E2182300D72F29 /* StopWatch */ = {
 			isa = PBXGroup;
 			children = (
-				C980655A26E214AF00D72F29 /* StopWatchViewController.swift */,
 				C9F23DA126EF744F00033A9E /* LapTime.swift */,
-				C977210B26E1C92C00A7CF10 /* StopWatchTableViewController.swift */,
 				C977210D26E1CB4A00A7CF10 /* StopwatchTableViewCell.swift */,
+				C980655A26E214AF00D72F29 /* StopWatchViewController.swift */,
 			);
 			path = StopWatch;
 			sourceTree = "<group>";
@@ -95,6 +94,7 @@
 		C980655E26E2185000D72F29 /* Timer */ = {
 			isa = PBXGroup;
 			children = (
+				C9542E2426F32FF700F03A6A /* TimerViewController.swift */,
 			);
 			path = Timer;
 			sourceTree = "<group>";
@@ -220,6 +220,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C9542E2526F32FF700F03A6A /* TimerViewController.swift in Sources */,
 				C9EFB68426E7B0EB0048D46F /* SoundTableViewCell.swift in Sources */,
 				C9F036DA26E350770026DCBC /* TimeZone.swift in Sources */,
 				C9C7EEA126E07907004F3F93 /* ViewController.swift in Sources */,
@@ -237,7 +238,6 @@
 				C9EFB67C26E786E50048D46F /* EditAlarmRepeatDayTableViewController.swift in Sources */,
 				C9C7EEA726E07907004F3F93 /* DemoClockApp.xcdatamodeld in Sources */,
 				C977210826E0B1E200A7CF10 /* TimeZoneListTableViewController.swift in Sources */,
-				C977210C26E1C92C00A7CF10 /* StopWatchTableViewController.swift in Sources */,
 				C912E54126E4D3A40003E9E9 /* Alarm.swift in Sources */,
 				C977210E26E1CB4A00A7CF10 /* StopwatchTableViewCell.swift in Sources */,
 			);
@@ -389,6 +389,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = KZ4YU874PU;
 				INFOPLIST_FILE = DemoClockApp/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -408,6 +409,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = KZ4YU874PU;
 				INFOPLIST_FILE = DemoClockApp/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

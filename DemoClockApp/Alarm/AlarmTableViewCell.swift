@@ -7,22 +7,31 @@
 
 import UIKit
 
+protocol AlarmTableViewCellTapDelegate {
+    func isActiveSwitch(cell: AlarmTableViewCell)
+}
+
 
 class AlarmTableViewCell: UITableViewCell {
-
+    var delegate: AlarmTableViewCellTapDelegate?
     @IBOutlet weak var alarmTime: UILabel!
-    @IBOutlet weak var alarmName: UILabel!
+    @IBOutlet weak var alarmNameAndRepeatDays: UILabel!
     @IBOutlet weak var alarmSwitch: UISwitch!
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
-
+    
+    @IBAction func turnAlarmIsActiveSwitch(_ sender: UISwitch) {
+        delegate?.isActiveSwitch(cell: self)
+    }
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        self.delegate = nil
+    }
+    
 }

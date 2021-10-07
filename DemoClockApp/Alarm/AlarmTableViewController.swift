@@ -9,33 +9,37 @@ import UIKit
 
 class AlarmTableViewController: UITableViewController {
     
-    var alarmList = [Alarm]()
+    var alarmList = [Alarm]() {
+        didSet {
+            alarmList = alarmList.sorted { $0.alarmTime < $1.alarmTime }
+        }
+    }
     @IBOutlet weak var editAlarmButton: UIBarButtonItem!
     
+    func updateTableViewUIByEditStatus(editStatus: Bool){
+        if editStatus == false {
+            tableView.isEditing = false
+            editAlarmButton.title = "編輯"
+            tableView.reloadData()
+        }
+        
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
-        alarmList = [Alarm(alarmTime: "8:30", repeatDays:[.Sun:true,.Mon:false,.Tue:false,.Wed:false,.Thur:false,.Fri:false,.Sat:false], alarmLabel: "起床", alarmSound: "Uplift", alarmSnooze: true, alarmIsActive: true)]
+        alarmList = [Alarm(alarmTime: "08:30", repeatDays:[.Sun:true,.Mon:false,.Tue:false,.Wed:false,.Thur:false,.Fri:false,.Sat:false], alarmLabel: "起床", alarmSound: .Uplift, alarmSnooze: true, alarmIsActive: true)]
         
-        // 自動推算 row 高度
+        // tableview
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = UITableView.automaticDimension
-        
         tableView.tableFooterView = UIView()
         tableView.allowsSelection = false
         tableView.allowsSelectionDuringEditing = true
-        
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-        
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
+    
     
     // 畫面從其他tab頁面回來預設皆為不可編輯狀態
     override func viewWillDisappear(_ animated: Bool) {
-        tableView.isEditing = false
-        editAlarmButton.title = "編輯"
-        tableView.reloadData()
+        updateTableViewUIByEditStatus(editStatus: false)
     }
     
     // MARK: - Table view data source
@@ -49,21 +53,23 @@ class AlarmTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "\(AlarmTableViewCell.self)", for: indexPath) as? AlarmTableViewCell else { return UITableViewCell()}
         let row = indexPath.row
-        cell.alarmName.text = alarmList[row].alarmLabel
-        cell.alarmTime.text = "\(alarmList[row].alarmTime)"
-        cell.alarmSwitch.isOn = alarmList[row].alarmIsActive
-        cell.alarmSwitch.isHidden = tableView.isEditing ? true : false // edit 則隱藏 switch 開關
+        let alarm = alarmList[row]
+        cell.alarmTime.text = "\(alarm.alarmTime)"
+        cell.alarmNameAndRepeatDays.text = "\(alarm.alarmLabel), \(alarm.alarmRepeatDaysDescription)"
+        cell.alarmSwitch.isOn = alarm.alarmIsActive
+        cell.alarmSwitch.isHidden = tableView.isEditing ? true : false // 編輯時則隱藏開關
         cell.editingAccessoryType = .disclosureIndicator
+        cell.delegate = self
         return cell
     }
     // 鬧鐘列表:編輯狀態(編輯/完成)
-    @IBAction func editTimeZoneList(_ sender: UIBarButtonItem) {
-        tableView.setEditing(!tableView.isEditing, animated: true)
-        tableView.reloadData()
+    @IBAction func editAlarmList(_ sender: UIBarButtonItem) {
+        tableView.setEditing(!tableView.isEditing, animated: false)
         sender.title = tableView.isEditing ? "完成" : "編輯"
+        tableView.reloadData()
     }
     
-    // MARK: 編輯 - 刪除或插入
+    // MARK: 編輯 - 刪除
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return true
     }
@@ -76,46 +82,50 @@ class AlarmTableViewController: UITableViewController {
             alarmList.remove(at: indexPath.row)
             // 刪除儲存格
             tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-        }    
-    }
-
-    // MARK: - Navigation
-   
-    //
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-        let navigationController = segue.destination as? UINavigationController
-        let editAlarmTableViewController = navigationController?.viewControllers[0] as? EditAlarmTableViewController
-        editAlarmTableViewController?.delegate = self
-        guard let row = tableView.indexPathForSelectedRow?.row else { return }
-        editAlarmTableViewController?.alarm = alarmList[row]
-    }
-    
-    /*
-     @IBSegueAction func editAlarm(_ coder: NSCoder) -> UINavigationController? {
-     let navigationController = UINavigationController() as? UINavigationController
-     let editAlarmTableViewController = navigationController?.viewControllers[0] as? EditAlarmTableViewController
-     editAlarmTableViewController?.delegate = self
-     return navigationController
-     }
-     */
-    
-    
-    @IBAction func unwindToAlarmTableView(_ unwindSegue: UIStoryboardSegue) {
-        if let sourceViewController = unwindSegue.source as? EditAlarmTableViewController {
-            print("")
         }
-        // Use data from the view controller which initiated the unwind segue
+    }
+    
+    // MARK: - Navigation
+    @IBSegueAction func editAlarm(_ coder: NSCoder, sender: Any?, segueIdentifier: String?) -> EditAlarmTableViewController? {
+        guard let controller = EditAlarmTableViewController(coder: coder) else { return nil }
+        controller.delegate = self
+        // 修改鬧鐘,傳目前鬧鐘資訊至下頁
+        guard let row = tableView.indexPathForSelectedRow?.row else { return controller }
+        controller.alarm = alarmList[row]
+        return controller
+    }
+    @IBAction func unwindToAlarmTableViewController(_ unwindSegue: UIStoryboardSegue) {
+        if let sourceViewController = unwindSegue.source as? EditAlarmTableViewController,
+           let alarm = sourceViewController.alarm {
+            if unwindSegue.identifier == "unwindToAlarmTableViewControllerFromSave" {
+                if let indexPath = tableView.indexPathForSelectedRow {
+                    alarmList[indexPath.row] = alarm
+                    tableView.reloadRows(at: [indexPath], with: .none)
+                } else {
+                    alarmList.insert(alarm, at: 0)
+                    tableView.insertRows(at: [IndexPath(row: 0, section: 0)], with: .automatic)
+                }
+            } else if unwindSegue.identifier == "unwindToAlarmTableViewControllerFromDelete"{
+                if let indexPath = tableView.indexPathForSelectedRow {
+                    alarmList.remove(at: indexPath.row)
+                    tableView.deleteRows(at: [indexPath], with: .fade)
+                }
+            }
+            updateTableViewUIByEditStatus(editStatus: false)
+        }
     }
 }
 
 extension AlarmTableViewController: EditAlarmTableViewControllerDelegate {
     // 在編輯頁面按取消或頁面下滑取消而回到鬧鐘列表頁面, 觸發使鬧鐘列表頁面呈現不可編輯狀態
     func editAlarmTableViewControllerDidCancel(_ controller: EditAlarmTableViewController) {
-        tableView.isEditing = false
-        editAlarmButton.title = "編輯"
-        tableView.reloadData()
+        updateTableViewUIByEditStatus(editStatus: false)
+    }
+}
+extension AlarmTableViewController: AlarmTableViewCellTapDelegate{
+    func isActiveSwitch(cell: AlarmTableViewCell) {
+        guard let indexPath = self.tableView.indexPath(for: cell) else { return }
+        alarmList[indexPath.row].alarmIsActive = !alarmList[indexPath.row].alarmIsActive
+        tableView.reloadRows(at: [indexPath], with: .automatic)
     }
 }

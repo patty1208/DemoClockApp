@@ -8,56 +8,41 @@
 import UIKit
 
 class EditAlarmLabelTableViewController: UITableViewController {
-    var alarmName: String =  "Alarm"
+    var alarmName: String
+    init?(coder: NSCoder, alarmLabel: String){
+        self.alarmName = alarmLabel
+        super.init(coder: coder)
+    }
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     @IBOutlet weak var labelTextField: UITextField!
+    override func viewWillAppear(_ animated: Bool) {
+        labelTextField.becomeFirstResponder()
+
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         // 自動推算 row 高度
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = UITableView.automaticDimension
-        
+        tableView.tableHeaderView = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height/5))
         tableView.tableFooterView = UIView() // 不顯示沒有資料的分隔線
-        tableView.allowsSelection = true
-        labelTextField.becomeFirstResponder()
         labelTextField.text = alarmName
-        
-         
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        if isMovingFromParent {
+            performSegue(withIdentifier: "unwindToEditAlarmFromLabel", sender: self)
+        }
+     }
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableView.automaticDimension
     }
-    // MARK: 表頭表尾
-    /*
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return "表頭文字"
-    }
-    func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
-        return "表尾文字"
-    }
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        return view
-    }
-    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-        return view
-    }
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 50
-    }
-    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        return 50
-    }
-    */
-
-    /*
+    
     // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        alarmName = labelTextField.text ?? "Alarm"
     }
-    */
-
 }
 
