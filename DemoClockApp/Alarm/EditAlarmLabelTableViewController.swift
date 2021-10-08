@@ -42,7 +42,9 @@ class EditAlarmLabelTableViewController: UITableViewController {
     
     // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        alarmName = labelTextField.text ?? "Alarm"
+        if let text = labelTextField.text {
+            alarmName = text == "" ? "Alarm" : text
+        }
     }
 }
 
