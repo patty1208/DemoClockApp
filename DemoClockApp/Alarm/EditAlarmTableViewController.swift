@@ -30,12 +30,13 @@ class EditAlarmTableViewController: UITableViewController {
         alarmSoundLabel.text = alarm?.alarmSound.rawValue ?? AlarmSoundList.allCases[0].rawValue
         alarmIsSnoozeSwitch.isOn = alarm?.alarmSnooze ?? true
     }
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // 編輯頁面:目的 - 新增 alarm = nil / 修改 alarm != nil
         seperateCell.isHidden = alarm == nil ? true : false
         deleteCell.isHidden = alarm == nil ? true : false
+        title = alarm == nil ? "新增鬧鐘" : "編輯鬧鐘"
         alarm = alarm ?? Alarm(alarmTime: formatter.string(from: Date()), repeatDays: [.Sun:false,.Mon:false,.Tue:false,.Wed:false,.Thur:false,.Fri:false,.Sat:false], alarmLabel: "Alarm", alarmSound: AlarmSoundList.allCases[0], alarmSnooze: true, alarmIsActive: true)
         updateUI(alarm: alarm)
         
