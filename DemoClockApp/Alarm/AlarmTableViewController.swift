@@ -12,6 +12,7 @@ class AlarmTableViewController: UITableViewController {
     var alarmList = [Alarm]() {
         didSet {
             alarmList = alarmList.sorted { $0.alarmTime < $1.alarmTime }
+            Alarm.saveAlarm(alarmList)
         }
     }
     @IBOutlet weak var editAlarmButton: UIBarButtonItem!
@@ -27,7 +28,9 @@ class AlarmTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        alarmList = [Alarm(alarmTime: "08:30", repeatDays:[.Sun:true,.Mon:false,.Tue:false,.Wed:false,.Thur:false,.Fri:false,.Sat:false], alarmLabel: "起床", alarmSound: .Uplift, alarmSnooze: true, alarmIsActive: true)]
+        if let alarmList = Alarm.loadAlarms(){
+            self.alarmList = alarmList
+        }
         
         // tableview
         tableView.rowHeight = UITableView.automaticDimension

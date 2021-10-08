@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Alarm {
+struct Alarm: Codable {
     var alarmTime: String
     var repeatDays: [Week:Bool]
     var alarmLabel: String
@@ -40,8 +40,29 @@ struct Alarm {
             return repeatString
         }
     }
+    
+    static let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+
+    static func saveAlarm(_ alarms: [Alarm]) {
+        // 編碼
+        let encoder = JSONEncoder()
+        let data = try? encoder.encode(alarms)
+        // 存檔
+        let url = documentsDirectory.appendingPathComponent("alarm") // 路徑
+        try? data?.write(to: url) // 寫入
+    }
+    
+    // 讀取 documentDirectory 再解碼成自訂型別
+    static func loadAlarms() -> [Self]? { // [Self]: Self (大寫的 S) 代表型別 Alarm
+        // 讀取
+        let url = documentsDirectory.appendingPathComponent("alarm")
+        guard let data = try? Data(contentsOf: url) else { return nil }
+        // 解碼
+        let decoder = JSONDecoder()
+        return try? decoder.decode([Self].self, from: data)
+    }
 }
-enum Week: String, CaseIterable {
+enum Week: String, CaseIterable, Codable {
     case Sun = "Sunday"
     case Mon = "Monday"
     case Tue = "Tuesday"
@@ -51,7 +72,7 @@ enum Week: String, CaseIterable {
     case Sat = "Saturday"
 }
 
-enum AlarmSoundList: String, CaseIterable{
+enum AlarmSoundList: String, CaseIterable, Codable{
     case Rader, Apex, Uplift
 }
 
