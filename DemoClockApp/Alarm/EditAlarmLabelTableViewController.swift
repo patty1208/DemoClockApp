@@ -17,9 +17,9 @@ class EditAlarmLabelTableViewController: UITableViewController {
         fatalError("init(coder:) has not been implemented")
     }
     @IBOutlet weak var labelTextField: UITextField!
-    override func viewWillAppear(_ animated: Bool) {
-        labelTextField.becomeFirstResponder()
-
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        self.labelTextField.becomeFirstResponder()
     }
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,10 +32,11 @@ class EditAlarmLabelTableViewController: UITableViewController {
     }
     
     override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
         if isMovingFromParent {
             performSegue(withIdentifier: "unwindToEditAlarmFromLabel", sender: self)
         }
-     }
+    }
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableView.automaticDimension
     }
