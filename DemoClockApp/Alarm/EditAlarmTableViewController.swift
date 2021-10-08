@@ -29,12 +29,14 @@ class EditAlarmTableViewController: UITableViewController {
         alarmNameLabel.text = alarm?.alarmLabel ?? "Alarm"
         alarmSoundLabel.text = alarm?.alarmSound.rawValue ?? AlarmSoundList.allCases[0].rawValue
         alarmIsSnoozeSwitch.isOn = alarm?.alarmSnooze ?? true
-        // 刪除鬧鐘選項
-        seperateCell.isHidden = alarm == nil ? true : false
-        deleteCell.isHidden = alarm == nil ? true : false
     }
+
     override func viewDidLoad() {
         super.viewDidLoad()
+        // 編輯頁面:目的 - 新增 alarm = nil / 修改 alarm != nil
+        seperateCell.isHidden = alarm == nil ? true : false
+        deleteCell.isHidden = alarm == nil ? true : false
+        alarm = alarm ?? Alarm(alarmTime: formatter.string(from: Date()), repeatDays: [.Sun:false,.Mon:false,.Tue:false,.Wed:false,.Thur:false,.Fri:false,.Sat:false], alarmLabel: "Alarm", alarmSound: AlarmSoundList.allCases[0], alarmSnooze: true, alarmIsActive: true)
         updateUI(alarm: alarm)
         
         // present modally 向下滑相關
@@ -76,7 +78,8 @@ class EditAlarmTableViewController: UITableViewController {
     }
     
     @IBAction func unwindToEditAlarm(_ unwindSegue: UIStoryboardSegue) {
-        if unwindSegue.identifier == "unwindToEditAlarmFromRepeatDays" {
+        if unwindSegue.identifier ==
+            "unwindToEditAlarmFromRepeatDays" {
             if let sourceViewController = unwindSegue.source as? EditAlarmRepeatDayTableViewController {
                 alarm?.repeatDays = sourceViewController.repeatDays
             }
@@ -94,7 +97,6 @@ class EditAlarmTableViewController: UITableViewController {
     
     // MARK: - Navigation
     
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "unwindToAlarmTableViewControllerFromSave"{
             alarm = Alarm(alarmTime: formatter.string(from: alarmTimeDatePicker.date), repeatDays: alarm?.repeatDays ?? [.Sun:false,.Mon:false,.Tue:false,.Wed:false,.Thur:false,.Fri:false,.Sat:false], alarmLabel: alarmNameLabel.text ?? "Alarm" , alarmSound: alarm?.alarmSound ?? AlarmSoundList.Rader, alarmSnooze: alarmIsSnoozeSwitch.isOn, alarmIsActive: alarm?.alarmIsActive ?? true)

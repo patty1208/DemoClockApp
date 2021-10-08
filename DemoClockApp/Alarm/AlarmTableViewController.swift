@@ -24,6 +24,7 @@ class AlarmTableViewController: UITableViewController {
         }
         
     }
+
     override func viewDidLoad() {
         super.viewDidLoad()
         alarmList = [Alarm(alarmTime: "08:30", repeatDays:[.Sun:true,.Mon:false,.Tue:false,.Wed:false,.Thur:false,.Fri:false,.Sat:false], alarmLabel: "起床", alarmSound: .Uplift, alarmSnooze: true, alarmIsActive: true)]

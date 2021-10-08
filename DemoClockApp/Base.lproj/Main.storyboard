@@ -976,13 +976,13 @@
                         <barButtonItem key="backBarButtonItem" id="eSa-Jb-S92"/>
                     </navigationItem>
                     <connections>
-                        <segue destination="xT9-3G-2ST" kind="unwind" identifier="unwindToEditAlarmFromRepeatDays" unwindAction="unwindToEditAlarm:" id="DIu-I2-Qj3"/>
+                        <segue destination="xT9-3G-2ST" kind="unwind" identifier="unwindToEditAlarmFromRepeatDays" unwindAction="unwindToEditAlarm:" id="DqB-Ki-dUC"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tde-07-yp5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <exit id="xT9-3G-2ST" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="4305" y="814"/>
+            <point key="canvasLocation" x="4239" y="290"/>
         </scene>
         <!--Label-->
         <scene sceneID="bwK-LL-iag">
@@ -1035,7 +1035,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Tyv-ie-cQx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <exit id="mbR-hd-4cl" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="3438" y="1561"/>
+            <point key="canvasLocation" x="4946" y="814"/>
         </scene>
         <!--Edit Alarm Sound Table View Controller-->
         <scene sceneID="ygl-Qw-cPh">
@@ -1047,14 +1047,14 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="SoundTableViewCell" id="YGe-nz-Z3F" customClass="SoundTableViewCell" customModule="DemoClockApp" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="44.666666030883789" width="375" height="41"/>
+                                <rect key="frame" x="0.0" y="44.666666030883789" width="375" height="40.666667938232422"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="YGe-nz-Z3F" id="nfu-vC-fyv">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="41"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="40.666667938232422"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="鈴聲名字" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rGp-PV-uEz">
-                                            <rect key="frame" x="10" y="10" width="355" height="21"/>
+                                            <rect key="frame" x="10" y="10.000000000000002" width="355" height="20.666666666666671"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -1085,7 +1085,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gOg-Is-JoG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <exit id="CvG-qu-V5Z" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="4305" y="1561"/>
+            <point key="canvasLocation" x="4238" y="1191"/>
         </scene>
         <!--Alarm-->
         <scene sceneID="QPQ-mz-c8z">
