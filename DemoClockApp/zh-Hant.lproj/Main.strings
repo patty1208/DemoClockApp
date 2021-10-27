@@ -1,0 +1,156 @@
+
+/* Class = "UIButton"; configuration.title = "Lap"; ObjectID = "0Cl-WH-g2X"; */
+"0Cl-WH-g2X.configuration.title" = "Lap";
+
+/* Class = "UIButton"; normalTitle = "分圈"; ObjectID = "0Cl-WH-g2X"; */
+"0Cl-WH-g2X.normalTitle" = "分圈";
+
+/* Class = "UITabBarItem"; title = "World Clock"; ObjectID = "4Tv-PI-Qmb"; */
+"4Tv-PI-Qmb.title" = "World Clock";
+
+/* Class = "UINavigationItem"; title = "當時間結束時"; ObjectID = "70Y-Tt-Q0F"; */
+"70Y-Tt-Q0F.title" = "當時間結束時";
+
+/* Class = "UILabel"; text = "city name"; ObjectID = "7ah-AE-bvH"; */
+"7ah-AE-bvH.text" = "city name";
+
+/* Class = "UINavigationItem"; title = "Repeat"; ObjectID = "83B-ku-Ojk"; */
+"83B-ku-Ojk.title" = "Repeat";
+
+/* Class = "UILabel"; text = "永不"; ObjectID = "8y3-wt-ddW"; */
+"8y3-wt-ddW.text" = "永不";
+
+/* Class = "UIBarButtonItem"; title = "確定"; ObjectID = "ABg-xV-yqW"; */
+"ABg-xV-yqW.title" = "確定";
+
+/* Class = "UILabel"; text = "今天 +0小時"; ObjectID = "Ejo-Fa-s8R"; */
+"Ejo-Fa-s8R.text" = "今天 +0小時";
+
+/* Class = "UIBarButtonItem"; title = "儲存"; ObjectID = "Epy-zC-Bn6"; */
+"Epy-zC-Bn6.title" = "儲存";
+
+/* Class = "UIBarButtonItem"; title = "編輯"; ObjectID = "F3G-LM-qHQ"; */
+"F3G-LM-qHQ.title" = "編輯";
+
+/* Class = "UILabel"; text = "Lap"; ObjectID = "Ffe-QQ-7c2"; */
+"Ffe-QQ-7c2.text" = "Lap";
+
+/* Class = "UILabel"; text = "稍後提醒"; ObjectID = "GJF-EM-m0u"; */
+"GJF-EM-m0u.text" = "稍後提醒";
+
+/* Class = "UINavigationItem"; title = "世界時鐘"; ObjectID = "GUI-iP-etu"; */
+"GUI-iP-etu.title" = "世界時鐘";
+
+/* Class = "UILabel"; text = "星期"; ObjectID = "GeU-hl-Yhh"; */
+"GeU-hl-Yhh.text" = "星期";
+
+/* Class = "UITabBarItem"; title = "Alarm"; ObjectID = "Kzh-Xm-pUl"; */
+"Kzh-Xm-pUl.title" = "Alarm";
+
+/* Class = "UINavigationItem"; title = "Label"; ObjectID = "LAX-id-sog"; */
+"LAX-id-sog.title" = "Label";
+
+/* Class = "UILabel"; text = "Tones"; ObjectID = "Luv-1G-sP3"; */
+"Luv-1G-sP3.text" = "Tones";
+
+/* Class = "UIButton"; configuration.title = "Start"; ObjectID = "MtW-Kh-eeK"; */
+"MtW-Kh-eeK.configuration.title" = "Start";
+
+/* Class = "UIButton"; normalTitle = "開始"; ObjectID = "MtW-Kh-eeK"; */
+"MtW-Kh-eeK.normalTitle" = "開始";
+
+/* Class = "UILabel"; text = "重複"; ObjectID = "Oki-oo-B7k"; */
+"Oki-oo-B7k.text" = "重複";
+
+/* Class = "UITabBarItem"; title = "Stopwatch"; ObjectID = "RnR-WC-8aK"; */
+"RnR-WC-8aK.title" = "Stopwatch";
+
+/* Class = "UILabel"; text = "When Timer Ends"; ObjectID = "SzY-vM-Rdq"; */
+"SzY-vM-Rdq.text" = "When Timer Ends";
+
+/* Class = "UILabel"; text = "上午 8:30"; ObjectID = "V6M-Wc-paP"; */
+"V6M-Wc-paP.text" = "上午 8:30";
+
+/* Class = "UILabel"; text = "Lap 1"; ObjectID = "WH3-Hl-9hD"; */
+"WH3-Hl-9hD.text" = "Lap 1";
+
+/* Class = "UIBarButtonItem"; title = "取消"; ObjectID = "bDs-vT-Q2a"; */
+"bDs-vT-Q2a.title" = "取消";
+
+/* Class = "UILabel"; text = "刪除鬧鐘"; ObjectID = "bvq-Q9-MVV"; */
+"bvq-Q9-MVV.text" = "刪除鬧鐘";
+
+/* Class = "UILabel"; text = "Running Time"; ObjectID = "chW-Po-iPW"; */
+"chW-Po-iPW.text" = "Running Time";
+
+/* Class = "UILabel"; text = "00:00.00"; ObjectID = "cvy-e7-IPt"; */
+"cvy-e7-IPt.text" = "00:00.00";
+
+/* Class = "UILabel"; text = "提示音"; ObjectID = "dTN-C8-RCF"; */
+"dTN-C8-RCF.text" = "提示音";
+
+/* Class = "UINavigationItem"; title = "選擇城市"; ObjectID = "fIJ-0Y-Bkz"; */
+"fIJ-0Y-Bkz.title" = "選擇城市";
+
+/* Class = "UILabel"; text = "鬧鐘"; ObjectID = "hah-Re-ZKC"; */
+"hah-Re-ZKC.text" = "鬧鐘";
+
+/* Class = "UIButton"; configuration.title = "Start"; ObjectID = "hdS-q8-w9D"; */
+"hdS-q8-w9D.configuration.title" = "Start";
+
+/* Class = "UIButton"; normalTitle = "開始"; ObjectID = "hdS-q8-w9D"; */
+"hdS-q8-w9D.normalTitle" = "開始";
+
+/* Class = "UILabel"; text = "地區"; ObjectID = "hjz-wb-7fN"; */
+"hjz-wb-7fN.text" = "地區";
+
+/* Class = "UIButton"; configuration.title = " "; ObjectID = "hxi-yR-BQ0"; */
+"hxi-yR-BQ0.configuration.title" = " ";
+
+/* Class = "UILabel"; text = "00:00.00"; ObjectID = "l0r-tB-Z2b"; */
+"l0r-tB-Z2b.text" = "00:00.00";
+
+/* Class = "UITabBarItem"; title = "Timer"; ObjectID = "lN1-xO-RUS"; */
+"lN1-xO-RUS.title" = "Timer";
+
+/* Class = "UIBarButtonItem"; title = "Back"; ObjectID = "lnq-Rb-OBK"; */
+"lnq-Rb-OBK.title" = "Back";
+
+/* Class = "UILabel"; text = "上午 00:00"; ObjectID = "lsQ-rK-R5Q"; */
+"lsQ-rK-R5Q.text" = "上午 00:00";
+
+/* Class = "UIBarButtonItem"; title = "取消"; ObjectID = "mSU-Po-s1A"; */
+"mSU-Po-s1A.title" = "取消";
+
+/* Class = "UILabel"; text = "時間"; ObjectID = "mfA-je-rvc"; */
+"mfA-je-rvc.text" = "時間";
+
+/* Class = "UINavigationItem"; title = "鬧鐘"; ObjectID = "ocF-VR-t8Q"; */
+"ocF-VR-t8Q.title" = "鬧鐘";
+
+/* Class = "UILabel"; text = "起床"; ObjectID = "oiU-9y-Zze"; */
+"oiU-9y-Zze.text" = "起床";
+
+/* Class = "UIBarButtonItem"; title = "編輯"; ObjectID = "pum-WI-FL2"; */
+"pum-WI-FL2.title" = "編輯";
+
+/* Class = "UILabel"; text = "鈴聲名字"; ObjectID = "rGp-PV-uEz"; */
+"rGp-PV-uEz.text" = "鈴聲名字";
+
+/* Class = "UILabel"; text = "標籤"; ObjectID = "rHq-mn-lzD"; */
+"rHq-mn-lzD.text" = "標籤";
+
+/* Class = "UIButton"; configuration.title = "Cancel"; ObjectID = "sgd-eE-teY"; */
+"sgd-eE-teY.configuration.title" = "Cancel";
+
+/* Class = "UIButton"; normalTitle = "分圈"; ObjectID = "sgd-eE-teY"; */
+"sgd-eE-teY.normalTitle" = "分圈";
+
+/* Class = "UILabel"; text = "鈴聲名字"; ObjectID = "taq-sz-XVI"; */
+"taq-sz-XVI.text" = "鈴聲名字";
+
+/* Class = "UILabel"; text = "上升"; ObjectID = "u63-Ss-5LD"; */
+"u63-Ss-5LD.text" = "上升";
+
+/* Class = "UINavigationItem"; title = "加入鬧鐘"; ObjectID = "wqF-Co-SRx"; */
+"wqF-Co-SRx.title" = "加入鬧鐘";
