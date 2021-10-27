@@ -23,7 +23,6 @@ class AlarmTableViewController: UITableViewController {
             editAlarmButton.title = "編輯"
             tableView.reloadData()
         }
-        
     }
 
     override func viewDidLoad() {

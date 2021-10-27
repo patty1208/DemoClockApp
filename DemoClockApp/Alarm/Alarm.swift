@@ -11,7 +11,7 @@ struct Alarm: Codable {
     var alarmTime: String
     var repeatDays: [Week:Bool]
     var alarmLabel: String
-    var alarmSound: AlarmSoundList
+    var alarmSound: RingtonesList
     var alarmSnooze: Bool
     var alarmIsActive: Bool
     var alarmRepeatDaysDescription: String {
@@ -72,7 +72,4 @@ enum Week: String, CaseIterable, Codable {
     case Sat = "Saturday"
 }
 
-enum AlarmSoundList: String, CaseIterable, Codable{
-    case Rader, Apex, Uplift
-}
 

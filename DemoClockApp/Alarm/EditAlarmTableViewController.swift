@@ -27,7 +27,7 @@ class EditAlarmTableViewController: UITableViewController {
         alarmTimeDatePicker.date = formatter.date(from: alarm?.alarmTime ?? "") ?? Date()
         alarmRepeatDayLabel.text = alarm?.alarmRepeatDaysDescription ?? "Never"
         alarmNameLabel.text = alarm?.alarmLabel ?? "Alarm"
-        alarmSoundLabel.text = alarm?.alarmSound.rawValue ?? AlarmSoundList.allCases[0].rawValue
+        alarmSoundLabel.text = alarm?.alarmSound.rawValue ?? RingtonesList.allCases[0].rawValue
         alarmIsSnoozeSwitch.isOn = alarm?.alarmSnooze ?? true
     }
     
@@ -37,7 +37,7 @@ class EditAlarmTableViewController: UITableViewController {
         seperateCell.isHidden = alarm == nil ? true : false
         deleteCell.isHidden = alarm == nil ? true : false
         title = alarm == nil ? "新增鬧鐘" : "編輯鬧鐘"
-        alarm = alarm ?? Alarm(alarmTime: formatter.string(from: Date()), repeatDays: [.Sun:false,.Mon:false,.Tue:false,.Wed:false,.Thur:false,.Fri:false,.Sat:false], alarmLabel: "Alarm", alarmSound: AlarmSoundList.allCases[0], alarmSnooze: true, alarmIsActive: true)
+        alarm = alarm ?? Alarm(alarmTime: formatter.string(from: Date()), repeatDays: [.Sun:false,.Mon:false,.Tue:false,.Wed:false,.Thur:false,.Fri:false,.Sat:false], alarmLabel: "Alarm", alarmSound: RingtonesList.allCases[0], alarmSnooze: true, alarmIsActive: true)
         updateUI(alarm: alarm)
         
         // present modally 向下滑相關
@@ -71,7 +71,7 @@ class EditAlarmTableViewController: UITableViewController {
         return EditAlarmLabelTableViewController(coder: coder, alarmLabel: alarmLabel)
     }
     @IBSegueAction func passSound(_ coder: NSCoder, sender: Any?, segueIdentifier: String?) -> EditAlarmSoundTableViewController? {
-        let sound = alarm?.alarmSound ?? AlarmSoundList.allCases[0]
+        let sound = alarm?.alarmSound ?? RingtonesList.allCases[0]
         return EditAlarmSoundTableViewController(coder: coder, alarmSound: sound)
     }
     @IBAction func turnAlarmIsSnoozeSwitch(_ sender: UISwitch) {
@@ -100,7 +100,7 @@ class EditAlarmTableViewController: UITableViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "unwindToAlarmTableViewControllerFromSave"{
-            alarm = Alarm(alarmTime: formatter.string(from: alarmTimeDatePicker.date), repeatDays: alarm?.repeatDays ?? [.Sun:false,.Mon:false,.Tue:false,.Wed:false,.Thur:false,.Fri:false,.Sat:false], alarmLabel: alarmNameLabel.text ?? "Alarm" , alarmSound: alarm?.alarmSound ?? AlarmSoundList.Rader, alarmSnooze: alarmIsSnoozeSwitch.isOn, alarmIsActive: alarm?.alarmIsActive ?? true)
+            alarm = Alarm(alarmTime: formatter.string(from: alarmTimeDatePicker.date), repeatDays: alarm?.repeatDays ?? [.Sun:false,.Mon:false,.Tue:false,.Wed:false,.Thur:false,.Fri:false,.Sat:false], alarmLabel: alarmNameLabel.text ?? "Alarm" , alarmSound: alarm?.alarmSound ?? RingtonesList.Rader, alarmSnooze: alarmIsSnoozeSwitch.isOn, alarmIsActive: alarm?.alarmIsActive ?? true)
         }
     }
 }

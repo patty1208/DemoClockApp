@@ -9,11 +9,11 @@ import UIKit
 
 class EditAlarmSoundTableViewController: UITableViewController {
     
-    let soundList = AlarmSoundList.allCases
-    var alarmSound: AlarmSoundList
+    let soundList = RingtonesList.allCases
+    var alarmSound: RingtonesList
     var selectIndex: Int
     
-    init?(coder: NSCoder, alarmSound: AlarmSoundList){
+    init?(coder: NSCoder, alarmSound: RingtonesList){
         self.alarmSound = alarmSound
         self.selectIndex = soundList.firstIndex(of: alarmSound) ?? 0
         super.init(coder: coder)
