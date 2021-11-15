@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="j1t-g2-G2T">
     <device id="retina5_9" orientation="portrait" appearance="light"/>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -103,14 +104,14 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="CityTableViewCell" id="6wT-tF-TvV" customClass="CityTableViewCell" customModule="DemoClockApp" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="44.666666030883789" width="375" height="41.333332061767578"/>
+                                <rect key="frame" x="0.0" y="44.666666030883789" width="375" height="40.666667938232422"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="6wT-tF-TvV" id="Ham-j6-Co4">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="41.333332061767578"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="40.666667938232422"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="city name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7ah-AE-bvH">
-                                            <rect key="frame" x="15" y="9.9999999999999982" width="345" height="21.333333333333329"/>
+                                            <rect key="frame" x="15" y="10.000000000000002" width="345" height="20.666666666666671"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -163,7 +164,7 @@
             </objects>
             <point key="canvasLocation" x="20" y="77.58620689655173"/>
         </scene>
-        <!--Timer-->
+        <!--計時器-->
         <scene sceneID="zMb-ey-PB7">
             <objects>
                 <viewController id="nOx-WV-azA" customClass="TimerViewController" customModule="DemoClockApp" customModuleProvider="target" sceneMemberID="viewController">
@@ -218,7 +219,7 @@
                                                     <constraint firstAttribute="width" secondItem="sgd-eE-teY" secondAttribute="height" id="EGF-Li-0UV"/>
                                                 </constraints>
                                                 <state key="normal" title="分圈"/>
-                                                <buttonConfiguration key="configuration" style="plain" title="Cancel" cornerStyle="capsule">
+                                                <buttonConfiguration key="configuration" style="plain" title="取消" cornerStyle="capsule">
                                                     <backgroundConfiguration key="background" strokeWidth="2" strokeOutset="-2">
                                                         <color key="backgroundColor" red="0.43722274900000002" green="0.52688390019999998" blue="0.65491896869999999" alpha="0.80000000000000004" colorSpace="custom" customColorSpace="displayP3"/>
                                                         <color key="strokeColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -233,7 +234,7 @@
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hdS-q8-w9D">
                                                 <rect key="frame" x="247.66666666666671" y="0.0" width="97.333333333333343" height="97.333333333333329"/>
                                                 <state key="normal" title="開始"/>
-                                                <buttonConfiguration key="configuration" style="plain" title="Start" cornerStyle="capsule">
+                                                <buttonConfiguration key="configuration" style="plain" title="開始" cornerStyle="capsule">
                                                     <backgroundConfiguration key="background" strokeWidth="2" strokeOutset="-2">
                                                         <color key="backgroundColor" red="0.70229732990000004" green="0.77687168120000005" blue="0.74901807310000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                         <color key="strokeColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -326,7 +327,7 @@
                             <constraint firstItem="cAS-GM-KRw" firstAttribute="trailing" secondItem="7An-FM-f4e" secondAttribute="trailing" id="sUF-we-YfL"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Timer" image="timer" catalog="system" id="lN1-xO-RUS"/>
+                    <tabBarItem key="tabBarItem" title="計時器" image="timer" catalog="system" id="lN1-xO-RUS"/>
                     <connections>
                         <outlet property="cancelButton" destination="sgd-eE-teY" id="JkC-o5-Xq9"/>
                         <outlet property="containPickerView" destination="jDO-x9-Vpc" id="iBz-ia-def"/>
@@ -355,14 +356,14 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="SoundTableViewCell" id="Npw-Jb-dsd" customClass="SoundTableViewCell" customModule="DemoClockApp" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="44.666666030883789" width="375" height="41.666667938232422"/>
+                                <rect key="frame" x="0.0" y="44.666666030883789" width="375" height="41"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Npw-Jb-dsd" id="mKR-94-TJI">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="41.666667938232422"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="41"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="鈴聲名字" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="taq-sz-XVI">
-                                            <rect key="frame" x="10" y="10.000000000000002" width="355" height="21.666666666666671"/>
+                                            <rect key="frame" x="10" y="10" width="355" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -403,7 +404,7 @@
             </objects>
             <point key="canvasLocation" x="1964" y="2216.7487684729067"/>
         </scene>
-        <!--Stopwatch-->
+        <!--碼錶-->
         <scene sceneID="rVc-G1-BDh">
             <objects>
                 <viewController id="wmg-qk-J9B" customClass="StopWatchViewController" customModule="DemoClockApp" customModuleProvider="target" sceneMemberID="viewController">
@@ -420,7 +421,7 @@
                                             <constraint firstAttribute="width" secondItem="0Cl-WH-g2X" secondAttribute="height" id="tXG-5y-9Ob"/>
                                         </constraints>
                                         <state key="normal" title="分圈"/>
-                                        <buttonConfiguration key="configuration" style="plain" title="Lap" cornerStyle="capsule">
+                                        <buttonConfiguration key="configuration" style="plain" title="分圈" cornerStyle="capsule">
                                             <backgroundConfiguration key="background" strokeWidth="2" strokeOutset="-2">
                                                 <color key="backgroundColor" red="0.43722274900000002" green="0.52688390019999998" blue="0.65491896869999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 <color key="strokeColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -434,7 +435,7 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MtW-Kh-eeK">
                                         <rect key="frame" x="247.66666666666671" y="0.0" width="97.333333333333343" height="97.333333333333329"/>
                                         <state key="normal" title="開始"/>
-                                        <buttonConfiguration key="configuration" style="plain" title="Start" cornerStyle="capsule">
+                                        <buttonConfiguration key="configuration" style="plain" title="開始" cornerStyle="capsule">
                                             <backgroundConfiguration key="background" strokeWidth="2" strokeOutset="-2">
                                                 <color key="backgroundColor" red="0.70229732990000004" green="0.77687168120000005" blue="0.74901807310000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 <color key="strokeColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -562,7 +563,7 @@
                             <constraint firstItem="r5n-m1-qaa" firstAttribute="trailing" secondItem="l0r-tB-Z2b" secondAttribute="trailing" id="wdP-dr-HHV"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Stopwatch" image="stopwatch.fill" catalog="system" id="RnR-WC-8aK"/>
+                    <tabBarItem key="tabBarItem" title="碼錶" image="stopwatch.fill" catalog="system" id="RnR-WC-8aK"/>
                     <connections>
                         <outlet property="finalTimeLabel" destination="l0r-tB-Z2b" id="Bw5-cu-jti"/>
                         <outlet property="headerLapNumberLabel" destination="Ffe-QQ-7c2" id="Iw8-pp-Iix"/>
@@ -577,11 +578,11 @@
             </objects>
             <point key="canvasLocation" x="1817" y="1561"/>
         </scene>
-        <!--World Clock-->
+        <!--世界時鐘-->
         <scene sceneID="0Mt-M9-Pa6">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="VUH-uW-c9x" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="World Clock" image="globe" catalog="system" id="4Tv-PI-Qmb"/>
+                    <tabBarItem key="tabBarItem" title="世界時鐘" image="globe" catalog="system" id="4Tv-PI-Qmb"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="EIp-BC-QvP">
                         <rect key="frame" x="0.0" y="44" width="375" height="96"/>
@@ -1099,14 +1100,14 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="SoundTableViewCell" id="YGe-nz-Z3F" customClass="SoundTableViewCell" customModule="DemoClockApp" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="44.666666030883789" width="375" height="40.666667938232422"/>
+                                <rect key="frame" x="0.0" y="44.666666030883789" width="375" height="41.333332061767578"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="YGe-nz-Z3F" id="nfu-vC-fyv">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="40.666667938232422"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="41.333332061767578"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="鈴聲名字" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rGp-PV-uEz">
-                                            <rect key="frame" x="10" y="10.000000000000002" width="355" height="20.666666666666671"/>
+                                            <rect key="frame" x="10" y="9.9999999999999982" width="355" height="21.333333333333329"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -1139,11 +1140,11 @@
             </objects>
             <point key="canvasLocation" x="4238" y="1191"/>
         </scene>
-        <!--Alarm-->
+        <!--鬧鐘-->
         <scene sceneID="QPQ-mz-c8z">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="B4x-1Y-L9D" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Alarm" image="alarm.fill" catalog="system" id="Kzh-Xm-pUl"/>
+                    <tabBarItem key="tabBarItem" title="鬧鐘" image="alarm.fill" catalog="system" id="Kzh-Xm-pUl"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="UxB-md-uMn">
                         <rect key="frame" x="0.0" y="44" width="375" height="96"/>

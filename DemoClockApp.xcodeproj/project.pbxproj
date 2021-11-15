@@ -12,6 +12,12 @@
 		C929C7232722976D00CA0146 /* AddWorldClockTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C929C7222722976D00CA0146 /* AddWorldClockTableViewController.swift */; };
 		C929C7252722996C00CA0146 /* CityTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C929C7242722996C00CA0146 /* CityTableViewCell.swift */; };
 		C9542E2526F32FF700F03A6A /* TimerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9542E2426F32FF700F03A6A /* TimerViewController.swift */; };
+		C95D03AE2742912D00343076 /* mixkit-tick-tock-clock-timer-1045.wav in Resources */ = {isa = PBXBuildFile; fileRef = C95D03A82742912D00343076 /* mixkit-tick-tock-clock-timer-1045.wav */; };
+		C95D03AF2742912D00343076 /* bensound-ukulele-cut.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C95D03A92742912D00343076 /* bensound-ukulele-cut.mp3 */; };
+		C95D03B02742912D00343076 /* bensound-onceagain-cut.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C95D03AA2742912D00343076 /* bensound-onceagain-cut.mp3 */; };
+		C95D03B12742912D00343076 /* bensound-littleidea-cut.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C95D03AB2742912D00343076 /* bensound-littleidea-cut.mp3 */; };
+		C95D03B22742912D00343076 /* bensound-clearday-cut.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C95D03AC2742912D00343076 /* bensound-clearday-cut.mp3 */; };
+		C95D03B32742912D00343076 /* bensound-sunny-cut.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C95D03AD2742912D00343076 /* bensound-sunny-cut.mp3 */; };
 		C977210826E0B1E200A7CF10 /* TimeZoneListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C977210726E0B1E200A7CF10 /* TimeZoneListTableViewController.swift */; };
 		C977210A26E0B2EC00A7CF10 /* TimeZoneListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C977210926E0B2EC00A7CF10 /* TimeZoneListTableViewCell.swift */; };
 		C977210E26E1CB4A00A7CF10 /* StopwatchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C977210D26E1CB4A00A7CF10 /* StopwatchTableViewCell.swift */; };
@@ -43,6 +49,12 @@
 		C929C7222722976D00CA0146 /* AddWorldClockTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddWorldClockTableViewController.swift; sourceTree = SOURCE_ROOT; };
 		C929C7242722996C00CA0146 /* CityTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CityTableViewCell.swift; path = DemoClockApp/CityTableViewCell.swift; sourceTree = SOURCE_ROOT; };
 		C9542E2426F32FF700F03A6A /* TimerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerViewController.swift; sourceTree = "<group>"; };
+		C95D03A82742912D00343076 /* mixkit-tick-tock-clock-timer-1045.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "mixkit-tick-tock-clock-timer-1045.wav"; sourceTree = "<group>"; };
+		C95D03A92742912D00343076 /* bensound-ukulele-cut.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "bensound-ukulele-cut.mp3"; sourceTree = "<group>"; };
+		C95D03AA2742912D00343076 /* bensound-onceagain-cut.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "bensound-onceagain-cut.mp3"; sourceTree = "<group>"; };
+		C95D03AB2742912D00343076 /* bensound-littleidea-cut.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "bensound-littleidea-cut.mp3"; sourceTree = "<group>"; };
+		C95D03AC2742912D00343076 /* bensound-clearday-cut.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "bensound-clearday-cut.mp3"; sourceTree = "<group>"; };
+		C95D03AD2742912D00343076 /* bensound-sunny-cut.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "bensound-sunny-cut.mp3"; sourceTree = "<group>"; };
 		C977210726E0B1E200A7CF10 /* TimeZoneListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeZoneListTableViewController.swift; sourceTree = "<group>"; };
 		C977210926E0B2EC00A7CF10 /* TimeZoneListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeZoneListTableViewCell.swift; sourceTree = "<group>"; };
 		C977210D26E1CB4A00A7CF10 /* StopwatchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopwatchTableViewCell.swift; sourceTree = "<group>"; };
@@ -81,6 +93,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C95D03B42742915600343076 /* Ringtones */ = {
+			isa = PBXGroup;
+			children = (
+				C95D03AC2742912D00343076 /* bensound-clearday-cut.mp3 */,
+				C95D03AB2742912D00343076 /* bensound-littleidea-cut.mp3 */,
+				C95D03AA2742912D00343076 /* bensound-onceagain-cut.mp3 */,
+				C95D03AD2742912D00343076 /* bensound-sunny-cut.mp3 */,
+				C95D03A92742912D00343076 /* bensound-ukulele-cut.mp3 */,
+				C95D03A82742912D00343076 /* mixkit-tick-tock-clock-timer-1045.wav */,
+			);
+			path = Ringtones;
+			sourceTree = "<group>";
+		};
 		C980655C26E2182300D72F29 /* StopWatch */ = {
 			isa = PBXGroup;
 			children = (
@@ -95,8 +120,8 @@
 			isa = PBXGroup;
 			children = (
 				C929C7242722996C00CA0146 /* CityTableViewCell.swift */,
-				C929C7222722976D00CA0146 /* AddWorldClockTableViewController.swift */,
 				C977210926E0B2EC00A7CF10 /* TimeZoneListTableViewCell.swift */,
+				C929C7222722976D00CA0146 /* AddWorldClockTableViewController.swift */,
 				C977210726E0B1E200A7CF10 /* TimeZoneListTableViewController.swift */,
 				C9F036D926E350770026DCBC /* TimeZone.swift */,
 			);
@@ -148,6 +173,7 @@
 			isa = PBXGroup;
 			children = (
 				C98990CB27142F5700D319EF /* Ringtones.swift */,
+				C95D03B42742915600343076 /* Ringtones */,
 				C980655F26E2185900D72F29 /* Alarm */,
 				C980655E26E2185000D72F29 /* Timer */,
 				C980655D26E2183900D72F29 /* WorldClock */,
@@ -227,9 +253,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C95D03B22742912D00343076 /* bensound-clearday-cut.mp3 in Resources */,
+				C95D03B32742912D00343076 /* bensound-sunny-cut.mp3 in Resources */,
 				C9C7EEAC26E07908004F3F93 /* LaunchScreen.storyboard in Resources */,
+				C95D03B12742912D00343076 /* bensound-littleidea-cut.mp3 in Resources */,
+				C95D03AF2742912D00343076 /* bensound-ukulele-cut.mp3 in Resources */,
 				C9C7EEA926E07908004F3F93 /* Assets.xcassets in Resources */,
+				C95D03B02742912D00343076 /* bensound-onceagain-cut.mp3 in Resources */,
 				C9C7EEA426E07907004F3F93 /* Main.storyboard in Resources */,
+				C95D03AE2742912D00343076 /* mixkit-tick-tock-clock-timer-1045.wav in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -415,7 +447,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = KZ4YU874PU;
 				INFOPLIST_FILE = DemoClockApp/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -435,7 +467,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = KZ4YU874PU;
 				INFOPLIST_FILE = DemoClockApp/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
