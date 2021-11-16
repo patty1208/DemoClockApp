@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import UserNotifications
 
 class AlarmTableViewController: UITableViewController {
     
@@ -24,13 +25,12 @@ class AlarmTableViewController: UITableViewController {
             tableView.reloadData()
         }
     }
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         if let alarmList = Alarm.loadAlarms(){
             self.alarmList = alarmList
         }
-        
         // tableview
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = UITableView.automaticDimension
@@ -97,6 +97,50 @@ class AlarmTableViewController: UITableViewController {
         controller.alarm = alarmList[row]
         return controller
     }
+    
+    func notificationFromAlarm(alarm: Alarm){
+        let content = UNMutableNotificationContent()
+        content.body = "\(alarm.alarmLabel)"
+        content.sound = UNNotificationSound(named: UNNotificationSoundName(rawValue: alarm.alarmSound.soundFileFullName))
+        
+        let formatter = DateFormatter()
+        formatter.dateFormat = "HH:mm"
+        guard let date = formatter.date(from: alarm.alarmTime) else { return }
+        
+        if alarm.alarmIsActive == true {
+            if Array(alarm.repeatDays.values) == Array(repeating: false, count: 7){
+                let components = Calendar.current.dateComponents([.hour, .minute], from: date)
+                let trigger = UNCalendarNotificationTrigger(dateMatching: components, repeats: true)
+                let request = UNNotificationRequest(identifier: "Notification For Only Day From Alarm \(alarm.alarmID)", content: content, trigger: trigger)
+                UNUserNotificationCenter.current().add(request, withCompletionHandler: {error in
+                    print("成功建立推播通知 id: \(request.identifier)")
+                })
+                
+            } else {
+                // 刪除推播
+                UNUserNotificationCenter.current().removeDeliveredNotifications(withIdentifiers: ["Notification For Only Day From Alarm \(alarm.alarmID)"])
+                UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: ["Notification For Only Day From Alarm \(alarm.alarmID)"])
+            }
+            for i in Week.allCases {
+                let calendar = Calendar.current
+                var components = calendar.dateComponents([.weekday, .hour, .minute], from: date)
+                if alarm.repeatDays[i] == true {
+                    components.weekday = Week.allCases.firstIndex(of: i)! + 1
+                    let trigger = UNCalendarNotificationTrigger(dateMatching: components, repeats: true)
+                    let request = UNNotificationRequest(identifier: "Notification For Repeat Every \(i) From Alarm \(alarm.alarmID)", content: content, trigger: trigger)
+                    UNUserNotificationCenter.current().add(request, withCompletionHandler: {error in
+                        print("成功建立推播通知 id: \(request.identifier)")
+                    })
+                } else {
+                    // 刪除推播
+                    UNUserNotificationCenter.current().removeDeliveredNotifications(withIdentifiers: ["Notification For Repeat Every \(i) From Alarm \(alarm.alarmID)"])
+                    UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: ["Notification For Repeat Every \(i) From Alarm \(alarm.alarmID)"])
+                }
+            }
+        }
+        
+    }
+    
     @IBAction func unwindToAlarmTableViewController(_ unwindSegue: UIStoryboardSegue) {
         if let sourceViewController = unwindSegue.source as? EditAlarmTableViewController,
            let alarm = sourceViewController.alarm {
@@ -108,6 +152,7 @@ class AlarmTableViewController: UITableViewController {
                     alarmList.insert(alarm, at: 0)
                     tableView.insertRows(at: [IndexPath(row: 0, section: 0)], with: .automatic)
                 }
+                
             } else if unwindSegue.identifier == "unwindToAlarmTableViewControllerFromDelete"{
                 if let indexPath = tableView.indexPathForSelectedRow {
                     alarmList.remove(at: indexPath.row)
@@ -115,6 +160,7 @@ class AlarmTableViewController: UITableViewController {
                 }
             }
             updateTableViewUIByEditStatus(editStatus: false)
+            notificationFromAlarm(alarm: alarm)
         }
     }
 }
@@ -130,5 +176,6 @@ extension AlarmTableViewController: AlarmTableViewCellTapDelegate{
         guard let indexPath = self.tableView.indexPath(for: cell) else { return }
         alarmList[indexPath.row].alarmIsActive = !alarmList[indexPath.row].alarmIsActive
         tableView.reloadRows(at: [indexPath], with: .automatic)
+        notificationFromAlarm(alarm: alarmList[indexPath.row])
     }
 }

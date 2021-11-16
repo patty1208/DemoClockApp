@@ -87,21 +87,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 }
 extension AppDelegate: UNUserNotificationCenterDelegate {
+    
     // 在前景收到通知時所觸發的 function
     func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
         print("在前景收到通知...")
         completionHandler([.badge, .sound, .banner])
+        print(notification.request.identifier)
     }
     
     // 點擊通知觸發的事件
     func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
         let content = response.notification.request.content
         completionHandler()
-//        if response.notification.request.identifier == "Basic Notification" {
-//            // 取出userInfo的link並開啟網頁
-//            let requestUrl = URL(string: content.userInfo["link"]! as! String)
-//            UIApplication.shared.open(requestUrl!, options: [:], completionHandler: nil)
-//        }
+        
     }
 }
 

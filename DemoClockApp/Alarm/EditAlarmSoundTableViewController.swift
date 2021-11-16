@@ -6,14 +6,16 @@
 //
 
 import UIKit
+import AVFoundation
 
 class EditAlarmSoundTableViewController: UITableViewController {
     
-    let soundList = RingtonesList.allCases
-    var alarmSound: RingtonesList
+    let soundList = Sound.data
+    var alarmSound: Sound
     var selectIndex: Int
+    var player: AVPlayer?
     
-    init?(coder: NSCoder, alarmSound: RingtonesList){
+    init?(coder: NSCoder, alarmSound: Sound){
         self.alarmSound = alarmSound
         self.selectIndex = soundList.firstIndex(of: alarmSound) ?? 0
         super.init(coder: coder)
@@ -32,6 +34,9 @@ class EditAlarmSoundTableViewController: UITableViewController {
             performSegue(withIdentifier: "unwindToEditAlarmFromSound", sender: self)
         }
      }
+    override func viewDidDisappear(_ animated: Bool) {
+        player?.pause()
+    }
 
     // MARK: - Table view data source
 
@@ -45,7 +50,7 @@ class EditAlarmSoundTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "\(SoundTableViewCell.self)", for: indexPath) as? SoundTableViewCell else { return UITableViewCell() }
         let row = indexPath.row
-        cell.soundLabel.text = soundList[row].rawValue
+        cell.soundLabel.text = soundList[row].soundName
         if row == selectIndex {
             cell.accessoryType = .checkmark
         }
@@ -58,6 +63,11 @@ class EditAlarmSoundTableViewController: UITableViewController {
         tableView.deselectRow(at: indexPath, animated: true)
         selectIndex = indexPath.row
         alarmSound = soundList[selectIndex]
+        
+        if let url = Bundle.main.url(forResource: Sound.data[selectIndex].soundFile, withExtension: Sound.data[selectIndex].sounfFileExtension){
+            player = AVPlayer(url: url)
+            player?.play()
+        }
     }
     
     // MARK: - Navigation

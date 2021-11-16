@@ -7,12 +7,12 @@
 
 import UIKit
 import AVFoundation
-var player: AVPlayer?
 
 class EditTimerSoundTableViewController: UITableViewController {
     let ringtonesList = Sound.data
     var ringtone: Sound
     var selectIndex: Int
+    var player: AVPlayer?
     
     init?(coder: NSCoder, ringtone: Sound){
         self.ringtone = ringtone

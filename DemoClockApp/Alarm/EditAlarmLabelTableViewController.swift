@@ -41,6 +41,15 @@ class EditAlarmLabelTableViewController: UITableViewController {
         return UITableView.automaticDimension
     }
     
+    // 不顯示灰色section header
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        0
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        0
+    }
+    
     // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let text = labelTextField.text {

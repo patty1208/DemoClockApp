@@ -8,14 +8,15 @@
 import Foundation
 
 struct Alarm: Codable {
+    let alarmID: String
     var alarmTime: String
     var repeatDays: [Week:Bool]
     var alarmLabel: String
-    var alarmSound: RingtonesList
+    var alarmSound: Sound
     var alarmSnooze: Bool
     var alarmIsActive: Bool
     var alarmRepeatDaysDescription: String {
-        let weekNames: [Week] = [.Mon,.Tue,.Wed,.Thur,.Fri,.Sat,.Sun]
+        let weekNames: [Week] = [.Mon,.Tue,.Wed,.Thu,.Fri,.Sat,.Sun]
         var repeatDays = [Week]()
         for key in weekNames{
             if self.repeatDays[key] == true {
@@ -30,7 +31,7 @@ struct Alarm: Codable {
             return "Every day"
         } else if repeatDays.count == 2 && repeatDays.contains(.Sat) && repeatDays.contains(.Sun) {
             return "Weekends"
-        } else if repeatDays.contains(.Mon) && repeatDays.contains(.Tue) && repeatDays.contains(.Wed) && repeatDays.contains(.Thur) && repeatDays.contains(.Fri) {
+        } else if repeatDays.contains(.Mon) && repeatDays.contains(.Tue) && repeatDays.contains(.Wed) && repeatDays.contains(.Thu) && repeatDays.contains(.Fri) {
             return "WeekDays"
         } else {
             var repeatString = ""
@@ -67,7 +68,7 @@ enum Week: String, CaseIterable, Codable {
     case Mon = "Monday"
     case Tue = "Tuesday"
     case Wed = "Wednesday"
-    case Thur = "Thursday"
+    case Thu = "Thursday"
     case Fri = "Friday"
     case Sat = "Saturday"
 }
