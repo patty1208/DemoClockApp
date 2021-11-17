@@ -28,7 +28,7 @@ class StopWatchViewController: UIViewController {
                 button in
                 let alpha = button.isHighlighted ? 0.4 : 0.8
                 button.configuration?.background.backgroundColor = self.state == "Stop" ? UIColor(red: 179/255, green: 198/255, blue: 191/255, alpha: alpha) : UIColor(red: 240/255, green: 173/255, blue: 161/255, alpha: alpha)
-                button.configuration?.baseForegroundColor = self.state == "Stop" ? self.darkgreenCustomColor : self.darkredCustomColor
+                button.configuration?.attributedTitle?.foregroundColor = self.state == "Stop" ? self.darkgreenCustomColor : self.darkredCustomColor
                 }
             } else {
                 startOrStopButton.layer.cornerRadius = startOrStopButton.bounds.width/2
@@ -44,7 +44,7 @@ class StopWatchViewController: UIViewController {
                     button in
                     let alpha = button.isHighlighted ? 0.4 : 0.8
                     button.configuration?.background.backgroundColor = button.isEnabled ? UIColor(red: 111/255, green: 134/255, blue: 167/255, alpha: alpha) : UIColor(red: 111/255, green: 134/255, blue: 167/255, alpha: 0.2)
-                    button.configuration?.baseForegroundColor = button.isEnabled == true ? .darkGray : .systemGray4
+                    button.configuration?.attributedTitle?.foregroundColor = button.isEnabled == true ? .darkGray : .systemGray4
                 }
             } else {
                 lapOrResetButton.layer.cornerRadius = lapOrResetButton.bounds.width/2
@@ -77,7 +77,7 @@ class StopWatchViewController: UIViewController {
                     button in
                     let alpha = button.isHighlighted ? 0.4 : 0.8
                     button.configuration?.background.backgroundColor = button.isEnabled ? UIColor(red: 111/255, green: 134/255, blue: 167/255, alpha: alpha) : UIColor(red: 111/255, green: 134/255, blue: 167/255, alpha: 0.2)
-                    button.configuration?.baseForegroundColor = button.isEnabled == true ? .darkGray : .systemGray4
+                    button.configuration?.attributedTitle?.foregroundColor = button.isEnabled == true ? .darkGray : .systemGray4
                 }
             } else {
                 lapOrResetButton.layer.cornerRadius = lapOrResetButton.bounds.width/2
@@ -91,7 +91,7 @@ class StopWatchViewController: UIViewController {
                 button in
                 let alpha = button.isHighlighted ? 0.4 : 0.8
                 button.configuration?.background.backgroundColor = self.state == "Stop" ? UIColor(red: 179/255, green: 198/255, blue: 191/255, alpha: alpha) : UIColor(red: 240/255, green: 173/255, blue: 161/255, alpha: alpha)
-                button.configuration?.baseForegroundColor = self.state == "Stop" ? self.darkgreenCustomColor : self.darkredCustomColor
+                button.configuration?.attributedTitle?.foregroundColor = self.state == "Stop" ? self.darkgreenCustomColor : self.darkredCustomColor
                 }
             } else {
                 startOrStopButton.layer.cornerRadius = startOrStopButton.bounds.width/2
