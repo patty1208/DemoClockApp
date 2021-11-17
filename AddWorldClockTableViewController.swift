@@ -26,6 +26,11 @@ class AddWorldClockTableViewController: UITableViewController {
         searchController.searchResultsUpdater = self
         searchController.searchBar.delegate = self
         searchController.searchBar.showsCancelButton = true
+//        searchController.searchBar.setValue("New Title", forKey: "cancelButtonText")
+        
+        if let cancelButton = searchController.searchBar.value(forKey: "cancelButton") as? UIButton {
+            cancelButton.setTitle("取消", for: .normal)
+        }
         navigationItem.searchController = searchController
         navigationItem.hidesSearchBarWhenScrolling = false
         self.definesPresentationContext = true

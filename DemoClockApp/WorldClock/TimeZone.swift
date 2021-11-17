@@ -9,7 +9,8 @@ import Foundation
 import UIKit
 import CodableCSV
 
-struct Zone: Codable {
+struct Zone: Codable, Hashable {
+    let GMT: Int
     let iso2: String
     let zoneName: String
     let cityNameByCN: String
@@ -20,23 +21,28 @@ struct Zone: Codable {
     var diff: String {
         // 時差敘述, ex: 今天 -1小時
         func dateAndTimeToInt(format: String, zoneID: String, time: Date) -> Int? {
+            
             let formatter = DateFormatter()
             formatter.dateFormat = format
             formatter.locale = Locale(identifier: "zh_Hant_TW")
             formatter.timeZone = TimeZone(identifier: zoneID)
             let destination = formatter.string(from: time)
             return Int(destination)
+            
         }
+        // 判斷今天明天昨天以日期, 時差以GMT計算
         let destinationDate = dateAndTimeToInt(format: "dd", zoneID: self.zoneName, time: Date())
-        let destinationTime = dateAndTimeToInt(format: "HH", zoneID: self.zoneName, time: Date())
         let systemDate = dateAndTimeToInt(format: "dd", zoneID: TimeZone.current.identifier, time: Date())
-        let systemTime = dateAndTimeToInt(format: "HH", zoneID: TimeZone.current.identifier, time: Date())
-        
+        let destinationGMT = self.GMT
+        let systemGMT = TimeZone.current.abbreviation()?.replacingOccurrences(of: "GMT", with: "") ?? ""
+//        for i in TimeZone.knownTimeZoneIdentifiers{
+//            print(TimeZone(identifier: i)?.abbreviation())
+//        }
         if let destinationDate = destinationDate,
-           let destinationTime = destinationTime,
            let systemDate = systemDate,
-           let systemTime = systemTime{
-            let diffForHour = (destinationTime - systemTime) >= 0 ? "+\((destinationTime - systemTime))" : "\(destinationTime - systemTime)"
+           let systemGMT = Int(systemGMT) {
+            let diffForHour = (destinationGMT - systemGMT) >= 0 ? "+\((destinationGMT - systemGMT))" : "\(destinationGMT - systemGMT)"
+            
             if destinationDate - systemDate == 1{
                 return "明天 " + diffForHour + " 小時"
             } else if destinationDate - systemDate == 0{
@@ -91,4 +97,16 @@ extension Zone {
         let decoder = JSONDecoder()
         return try? decoder.decode([Self].self, from: data)
     }
+}
+// 排除重複的元素
+extension Array where Element: Hashable {
+  func removingDuplicates() -> [Element] {
+      var addedDict = [Element: Bool]()
+      return filter {
+        addedDict.updateValue(true, forKey: $0) == nil
+      }
+   }
+   mutating func removeDuplicates() {
+      self = self.removingDuplicates()
+   }
 }

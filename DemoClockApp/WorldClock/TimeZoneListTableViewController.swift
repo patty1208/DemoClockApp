@@ -12,6 +12,7 @@ class TimeZoneListTableViewController: UITableViewController {
     var timerForUpdateTime = Timer()
     var timeZoneList = [Zone](){
         didSet {
+            timeZoneList = timeZoneList.removingDuplicates()
             Zone.saveZone(timeZoneList)
         }
     }
@@ -78,7 +79,7 @@ class TimeZoneListTableViewController: UITableViewController {
         let formatter = DateFormatter()
         formatter.timeZone = TimeZone(identifier: zone.zoneName)
         formatter.locale = Locale(identifier: "zh_Hant_TW")
-        formatter.dateFormat = "a hh:mm"
+        formatter.dateFormat = "a h:mm"
         
         cell.timeDifference.text = "\(zone.diff)"
         cell.timeZone.text = zone.cityNameByCN
