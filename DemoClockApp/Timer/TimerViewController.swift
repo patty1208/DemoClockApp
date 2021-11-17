@@ -13,7 +13,6 @@ enum State: String {
 }
 class TimerViewController: UIViewController {
     
-    // pickerview
     @IBOutlet weak var containPickerView: UIView!
     @IBOutlet weak var countdownTimePickerView: UIPickerView!
     var demoStringLabel1: UILabel = UILabel()
@@ -24,30 +23,51 @@ class TimerViewController: UIViewController {
     @IBOutlet weak var cancelButton: UIButton! {
         didSet {
             if #available(iOS 15, *){
-            cancelButton.configurationUpdateHandler = {
-                button in
-                let alpha = button.isHighlighted ? 0.4 : 0.8
-                button.configuration?.background.backgroundColor = button.isEnabled ? UIColor(red: 111/255, green: 134/255, blue: 167/255, alpha: alpha) : UIColor(red: 111/255, green: 134/255, blue: 167/255, alpha: 0.2)
-                button.configuration?.baseForegroundColor = button.isEnabled == true ? .darkGray : .systemGray4
+                cancelButton.configurationUpdateHandler = {
+                    button in
+                    let alpha = button.isHighlighted ? 0.4 : 0.8
+                    button.configuration?.background.backgroundColor = button.isEnabled ? UIColor(red: 111/255, green: 134/255, blue: 167/255, alpha: alpha) : UIColor(red: 111/255, green: 134/255, blue: 167/255, alpha: 0.2)
+                    button.configuration?.baseForegroundColor = button.isEnabled == true ? .darkGray : .systemGray4
+                }
+            } else {
+                cancelButton.layer.borderWidth = 3
+                cancelButton.layer.cornerRadius = cancelButton.bounds.width / 2
+                let alpha = cancelButton.isHighlighted ? 0.4 : 0.8
+                cancelButton.layer.borderColor = cancelButton.isEnabled ? UIColor(red: 111/255, green: 134/255, blue: 167/255, alpha: alpha).cgColor : UIColor(red: 111/255, green: 134/255, blue: 167/255, alpha: 0.2).cgColor
+                cancelButton.setTitleColor(cancelButton.isEnabled == true ? .darkGray : .systemGray4, for: .normal)
             }
-            }}
+        }
     }
-    @IBOutlet weak var startPauseResumeButton: UIButton! {
+    @IBOutlet weak var startPauseResumeButton: UIButton!{
         didSet {
             if #available(iOS 15, *){
-            startPauseResumeButton.configurationUpdateHandler = {
-                button in
-                let alpha = button.isHighlighted ? 0.4 : 0.8
+                startPauseResumeButton.configurationUpdateHandler = {
+                    button in
+                    let alpha = button.isHighlighted ? 0.4 : 0.8
+                    if self.startPauseResumeButton.isEnabled == true {
+                        // 開始和繼續時:橘色,暫停和取消:綠色
+                        button.configuration?.background.backgroundColor = ["Start","Resume"].contains(self.state) ? UIColor(red: 255/255, green: 147/255, blue: 0/255, alpha: alpha) : UIColor(red: 179/255, green: 198/255, blue: 191/255, alpha: alpha)
+                        button.configuration?.baseForegroundColor = ["Start","Resume"].contains(self.state) ? UIColor(red: 168/255, green: 77/255, blue: 25/255, alpha: 1) : UIColor(red: 104/255, green: 142/255, blue: 128/255, alpha: 1)
+                    } else {
+                        button.configuration?.background.backgroundColor = UIColor(red: 179/255, green: 198/255, blue: 191/255, alpha: 0.2)
+                        button.configuration?.baseForegroundColor = UIColor(red: 104/255, green: 142/255, blue: 128/255, alpha: 1)
+                    }
+                }
+            } else {
+                startPauseResumeButton.layer.cornerRadius = startPauseResumeButton.bounds.width / 2
+                startPauseResumeButton.layer.borderWidth = 3
+                
+                let alpha = startPauseResumeButton.isHighlighted ? 0.4 : 0.8
                 if self.startPauseResumeButton.isEnabled == true {
                     // 開始和繼續時:橘色,暫停和取消:綠色
-                    button.configuration?.background.backgroundColor = ["Start","Resume"].contains(self.state) ? UIColor(red: 255/255, green: 147/255, blue: 0/255, alpha: alpha) : UIColor(red: 179/255, green: 198/255, blue: 191/255, alpha: alpha)
-                    button.configuration?.baseForegroundColor = ["Start","Resume"].contains(self.state) ? UIColor(red: 168/255, green: 77/255, blue: 25/255, alpha: 1) : UIColor(red: 104/255, green: 142/255, blue: 128/255, alpha: 1)
+                    startPauseResumeButton.layer.borderColor = ["Start","Resume"].contains(self.state) ? UIColor(red: 255/255, green: 147/255, blue: 0/255, alpha: alpha).cgColor : UIColor(red: 179/255, green: 198/255, blue: 191/255, alpha: alpha).cgColor
+                    startPauseResumeButton.setTitleColor(["Start","Resume"].contains(self.state) ? UIColor(red: 168/255, green: 77/255, blue: 25/255, alpha: 1) : UIColor(red: 104/255, green: 142/255, blue: 128/255, alpha: 1), for: .normal)
                 } else {
-                    button.configuration?.background.backgroundColor = UIColor(red: 179/255, green: 198/255, blue: 191/255, alpha: 0.2)
-                    button.configuration?.baseForegroundColor = UIColor(red: 104/255, green: 142/255, blue: 128/255, alpha: 1)
+                    startPauseResumeButton.layer.borderColor = UIColor(red: 179/255, green: 198/255, blue: 191/255, alpha: 0.2).cgColor
+                    startPauseResumeButton.setTitleColor(UIColor(red: 104/255, green: 142/255, blue: 128/255, alpha: 1), for: .normal)
                 }
             }
-            }}
+        }
     }
     var state = "Cancel" {
         didSet {
@@ -60,12 +80,57 @@ class TimerViewController: UIViewController {
             } else if state == "Cancel" {
                 startPauseResumeButton.setTitle("Start", for: .normal)
             }
+            
+            if #available(iOS 15, *){
+                startPauseResumeButton.configurationUpdateHandler = {
+                    button in
+                    let alpha = button.isHighlighted ? 0.4 : 0.8
+                    print(self.startPauseResumeButton.isEnabled)
+                    // 開始和繼續時:橘色,暫停和取消:綠色
+                    button.configuration?.background.backgroundColor = ["Start","Resume"].contains(self.state) == true ? UIColor(red: 255/255, green: 147/255, blue: 0/255, alpha: alpha) : UIColor(red: 179/255, green: 198/255, blue: 191/255, alpha: alpha)
+                    button.configuration?.attributedTitle?.foregroundColor = ["Start","Resume"].contains(self.state) ? UIColor(red: 168/255, green: 77/255, blue: 25/255, alpha: 1) : UIColor(red: 104/255, green: 142/255, blue: 128/255, alpha: 1)
+                    
+                    if self.startPauseResumeButton.isEnabled == false {
+                        button.configuration?.background.backgroundColor = UIColor(red: 179/255, green: 198/255, blue: 191/255, alpha: 0.2)
+                        button.configuration?.attributedTitle?.foregroundColor = UIColor(red: 104/255, green: 142/255, blue: 128/255, alpha: 1)
+                    }
+                }
+            } else {
+                startPauseResumeButton.layer.cornerRadius = startPauseResumeButton.bounds.width / 2
+                startPauseResumeButton.layer.borderWidth = 3
+                let alpha = startPauseResumeButton.isHighlighted ? 0.4 : 0.8
+                if self.startPauseResumeButton.isEnabled == true {
+                    // 開始和繼續時:橘色,暫停和取消:綠色
+                    startPauseResumeButton.layer.borderColor = ["Start","Resume"].contains(self.state) ? UIColor(red: 255/255, green: 147/255, blue: 0/255, alpha: alpha).cgColor : UIColor(red: 179/255, green: 198/255, blue: 191/255, alpha: alpha).cgColor
+                    startPauseResumeButton.setTitleColor(["Start","Resume"].contains(self.state) ? UIColor(red: 168/255, green: 77/255, blue: 25/255, alpha: 1) : UIColor(red: 104/255, green: 142/255, blue: 128/255, alpha: 1), for: .normal)
+                } else {
+                    startPauseResumeButton.layer.borderColor = UIColor(red: 179/255, green: 198/255, blue: 191/255, alpha: 0.2).cgColor
+                    startPauseResumeButton.setTitleColor(UIColor(red: 104/255, green: 142/255, blue: 128/255, alpha: 1), for: .normal)
+                }
+            }
+            
+            if #available(iOS 15, *){
+                cancelButton.configurationUpdateHandler = {
+                    button in
+                    let alpha = button.isHighlighted ? 0.4 : 0.8
+                    button.configuration?.background.backgroundColor = button.isEnabled ? UIColor(red: 111/255, green: 134/255, blue: 167/255, alpha: alpha) : UIColor(red: 111/255, green: 134/255, blue: 167/255, alpha: 0.2)
+                    button.configuration?.attributedTitle?.foregroundColor = button.isEnabled == true ? .darkGray : .systemGray4
+                }
+            } else {
+                cancelButton.layer.cornerRadius = cancelButton.bounds.width / 2
+                cancelButton.layer.borderWidth = 3
+                let alpha = cancelButton.isHighlighted ? 0.4 : 0.8
+                cancelButton.layer.borderColor = cancelButton.isEnabled ? UIColor(red: 111/255, green: 134/255, blue: 167/255, alpha: alpha).cgColor : UIColor(red: 111/255, green: 134/255, blue: 167/255, alpha: 0.2).cgColor
+                cancelButton.setTitleColor(.darkGray, for: .normal)
+                cancelButton.setTitleColor(.systemGray4, for: .disabled)
+            }
+            
         }
     }
     
     // 鈴聲
     @IBOutlet weak var ringtonesLabel: UILabel!
-//    var ringtone: RingtonesList? = RingtonesList.allCases[0]
+    //    var ringtone: RingtonesList? = RingtonesList.allCases[0]
     var ringtone: Sound? = Sound.data[0]
     
     // 倒數計時器畫面
@@ -113,7 +178,8 @@ class TimerViewController: UIViewController {
         super.viewDidLoad()
         updateTimerRingtoneUI() //鈴聲標籤文字
         customPickerViewUI(stringArray: [" hours"," min","  sec"], customPickerview: countdownTimePickerView) // pickerview畫面
-        selectPickerViewRows(hour: 10, min: 0, sec: 0) // 初始位置
+        selectPickerViewRows(hour: 0, min: 25, sec: 0) // 初始位置
+        
     }
     // timer結束的推播
     func timerFinishNotification() {

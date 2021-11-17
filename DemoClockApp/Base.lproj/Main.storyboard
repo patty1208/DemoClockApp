@@ -233,6 +233,9 @@
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hdS-q8-w9D">
                                                 <rect key="frame" x="247.66666666666671" y="0.0" width="97.333333333333343" height="97.333333333333329"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" secondItem="hdS-q8-w9D" secondAttribute="height" multiplier="1:1" id="04G-Bv-Di9"/>
+                                                </constraints>
                                                 <state key="normal" title="開始"/>
                                                 <buttonConfiguration key="configuration" style="plain" title="開始" cornerStyle="capsule">
                                                     <backgroundConfiguration key="background" strokeWidth="2" strokeOutset="-2">
@@ -434,6 +437,9 @@
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MtW-Kh-eeK">
                                         <rect key="frame" x="247.66666666666671" y="0.0" width="97.333333333333343" height="97.333333333333329"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="MtW-Kh-eeK" secondAttribute="height" multiplier="1:1" id="HA5-Mt-bV6"/>
+                                        </constraints>
                                         <state key="normal" title="開始"/>
                                         <buttonConfiguration key="configuration" style="plain" title="開始" cornerStyle="capsule">
                                             <backgroundConfiguration key="background" strokeWidth="2" strokeOutset="-2">
@@ -691,6 +697,7 @@
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="static" style="plain" separatorStyle="default" rowHeight="120" estimatedRowHeight="120" sectionHeaderHeight="28" sectionFooterHeight="28" id="GU3-3k-esF">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="758"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <color key="separatorColor" name="AccentColor"/>
                         <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         <sections>
@@ -704,16 +711,16 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="1mO-BI-WCy">
-                                                    <rect key="frame" x="20" y="30" width="335" height="60"/>
+                                                    <rect key="frame" x="20" y="25" width="335" height="70"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1" verticalHuggingPriority="251" text="時間" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mfA-je-rvc">
-                                                            <rect key="frame" x="0.0" y="20" width="34.666666666666664" height="20.333333333333329"/>
+                                                            <rect key="frame" x="0.0" y="25" width="34.666666666666664" height="20.333333333333329"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <datePicker contentMode="scaleToFill" horizontalHuggingPriority="999" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="1" style="inline" translatesAutoresizingMaskIntoConstraints="NO" id="0Va-6X-Rb1">
-                                                            <rect key="frame" x="34.666666666666657" y="5" width="300.33333333333337" height="50"/>
+                                                            <rect key="frame" x="34.666666666666657" y="10" width="300.33333333333337" height="50"/>
                                                             <connections>
                                                                 <action selector="changeTime:" destination="iec-t5-oM3" eventType="valueChanged" id="pp2-d6-79e"/>
                                                             </connections>
@@ -722,8 +729,8 @@
                                                 </stackView>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="bottom" secondItem="1mO-BI-WCy" secondAttribute="bottom" constant="30" id="7Xs-oW-zJr"/>
-                                                <constraint firstItem="1mO-BI-WCy" firstAttribute="top" secondItem="zfc-5J-LPp" secondAttribute="top" constant="30" id="SDS-4i-Vi2"/>
+                                                <constraint firstAttribute="bottom" secondItem="1mO-BI-WCy" secondAttribute="bottom" constant="25" id="7Xs-oW-zJr"/>
+                                                <constraint firstItem="1mO-BI-WCy" firstAttribute="top" secondItem="zfc-5J-LPp" secondAttribute="top" constant="25" id="SDS-4i-Vi2"/>
                                                 <constraint firstAttribute="trailing" secondItem="1mO-BI-WCy" secondAttribute="trailing" constant="20" id="YB9-4G-nYZ"/>
                                                 <constraint firstItem="1mO-BI-WCy" firstAttribute="leading" secondItem="zfc-5J-LPp" secondAttribute="leading" constant="20" id="uWj-Rg-n2A"/>
                                             </constraints>
@@ -1094,16 +1101,17 @@
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="hdT-qX-Cdg">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="758"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="SoundTableViewCell" id="YGe-nz-Z3F" customClass="SoundTableViewCell" customModule="DemoClockApp" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="44.666666030883789" width="375" height="41.666667938232422"/>
+                                <rect key="frame" x="0.0" y="44.666666030883789" width="375" height="40.666667938232422"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="YGe-nz-Z3F" id="nfu-vC-fyv">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="41.666667938232422"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="40.666667938232422"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="鈴聲名字" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rGp-PV-uEz">
-                                            <rect key="frame" x="10" y="10.000000000000002" width="355" height="21.666666666666671"/>
+                                            <rect key="frame" x="10" y="10.000000000000002" width="355" height="20.666666666666671"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>

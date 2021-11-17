@@ -23,21 +23,33 @@ class StopWatchViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var startOrStopButton: UIButton!{
         didSet {
+            if #available(iOS 15, *){
             startOrStopButton.configurationUpdateHandler = {
                 button in
                 let alpha = button.isHighlighted ? 0.4 : 0.8
                 button.configuration?.background.backgroundColor = self.state == "Stop" ? UIColor(red: 179/255, green: 198/255, blue: 191/255, alpha: alpha) : UIColor(red: 240/255, green: 173/255, blue: 161/255, alpha: alpha)
                 button.configuration?.baseForegroundColor = self.state == "Stop" ? self.darkgreenCustomColor : self.darkredCustomColor
+                }
+            } else {
+                startOrStopButton.layer.cornerRadius = startOrStopButton.bounds.width/2
+                let alpha = startOrStopButton.isHighlighted ? 0.4 : 0.8
+                startOrStopButton.layer.backgroundColor = self.state == "Stop" ? UIColor(red: 179/255, green: 198/255, blue: 191/255, alpha: alpha).cgColor : UIColor(red: 240/255, green: 173/255, blue: 161/255, alpha: alpha).cgColor
             }
         }
     }
     @IBOutlet weak var lapOrResetButton: UIButton!{
         didSet {
-            lapOrResetButton.configurationUpdateHandler = {
-                button in
-                let alpha = button.isHighlighted ? 0.4 : 0.8
-                button.configuration?.background.backgroundColor = button.isEnabled ? UIColor(red: 111/255, green: 134/255, blue: 167/255, alpha: alpha) : UIColor(red: 111/255, green: 134/255, blue: 167/255, alpha: 0.2)
-                button.configuration?.baseForegroundColor = button.isEnabled == true ? .darkGray : .systemGray4
+            if #available(iOS 15, *){
+                lapOrResetButton.configurationUpdateHandler = {
+                    button in
+                    let alpha = button.isHighlighted ? 0.4 : 0.8
+                    button.configuration?.background.backgroundColor = button.isEnabled ? UIColor(red: 111/255, green: 134/255, blue: 167/255, alpha: alpha) : UIColor(red: 111/255, green: 134/255, blue: 167/255, alpha: 0.2)
+                    button.configuration?.baseForegroundColor = button.isEnabled == true ? .darkGray : .systemGray4
+                }
+            } else {
+                lapOrResetButton.layer.cornerRadius = lapOrResetButton.bounds.width/2
+                let alpha = lapOrResetButton.isHighlighted ? 0.4 : 0.8
+                lapOrResetButton.layer.backgroundColor = lapOrResetButton.isEnabled ? UIColor(red: 111/255, green: 134/255, blue: 167/255, alpha: alpha).cgColor : UIColor(red: 111/255, green: 134/255, blue: 167/255, alpha: 0.2).cgColor
             }
         }
     }
@@ -58,6 +70,36 @@ class StopWatchViewController: UIViewController {
         didSet {
             startOrStopButton.setTitle(self.state == "Start" ? "Stop" : "Start", for: .normal)
             lapOrResetButton.setTitle(self.state == "Start" ? "Lap" : "Reset", for: .normal)
+        
+            
+            if #available(iOS 15, *){
+                lapOrResetButton.configurationUpdateHandler = {
+                    button in
+                    let alpha = button.isHighlighted ? 0.4 : 0.8
+                    button.configuration?.background.backgroundColor = button.isEnabled ? UIColor(red: 111/255, green: 134/255, blue: 167/255, alpha: alpha) : UIColor(red: 111/255, green: 134/255, blue: 167/255, alpha: 0.2)
+                    button.configuration?.baseForegroundColor = button.isEnabled == true ? .darkGray : .systemGray4
+                }
+            } else {
+                lapOrResetButton.layer.cornerRadius = lapOrResetButton.bounds.width/2
+                let alpha = lapOrResetButton.isHighlighted ? 0.4 : 0.8
+                lapOrResetButton.layer.backgroundColor = lapOrResetButton.isEnabled ? UIColor(red: 111/255, green: 134/255, blue: 167/255, alpha: alpha).cgColor : UIColor(red: 111/255, green: 134/255, blue: 167/255, alpha: 0.2).cgColor
+                lapOrResetButton.setTitleColor(lapOrResetButton.isEnabled == true ? .darkGray : .systemGray4, for: .normal)
+            }
+            
+            if #available(iOS 15, *){
+            startOrStopButton.configurationUpdateHandler = {
+                button in
+                let alpha = button.isHighlighted ? 0.4 : 0.8
+                button.configuration?.background.backgroundColor = self.state == "Stop" ? UIColor(red: 179/255, green: 198/255, blue: 191/255, alpha: alpha) : UIColor(red: 240/255, green: 173/255, blue: 161/255, alpha: alpha)
+                button.configuration?.baseForegroundColor = self.state == "Stop" ? self.darkgreenCustomColor : self.darkredCustomColor
+                }
+            } else {
+                startOrStopButton.layer.cornerRadius = startOrStopButton.bounds.width/2
+                let alpha = startOrStopButton.isHighlighted ? 0.4 : 0.8
+                startOrStopButton.layer.backgroundColor = self.state == "Stop" ? UIColor(red: 179/255, green: 198/255, blue: 191/255, alpha: alpha).cgColor : UIColor(red: 240/255, green: 173/255, blue: 161/255, alpha: alpha).cgColor
+                startOrStopButton.setTitleColor(state == "Stop" ? darkgreenCustomColor : self.darkredCustomColor, for: .normal)
+            }
+            
         }
     }
     var timerForFinal: Timer = Timer(){
@@ -82,26 +124,36 @@ class StopWatchViewController: UIViewController {
     @objc func timerActionForTotal() {
         let timeFromEnd = Date()
         let showTime = timeForFinal + timeFromEnd.timeIntervalSince(timeFromStartForFinal)
-        //      let minutes = String(format: "%02d", Int(showTime / 60))
-        //      let second = String(format: "%02d", Int(showTime) % 60)
-        // iOS 15
-        let minutes = Int(showTime/60).formatted(.number.precision(.integerLength(2)))
-        let seconds = (Int(showTime) % 60).formatted(.number.precision(.integerLength(2)))
-        let hundredsOfSeconds = (Int(showTime * 100) % 100).formatted(.number.precision(.integerLength(2)))
-        finalTimeLabel.text = "\(minutes):\(seconds).\(hundredsOfSeconds)"
+        if #available(iOS 15, *){
+            let minutes = Int(showTime/60).formatted(.number.precision(.integerLength(2)))
+            let seconds = (Int(showTime) % 60).formatted(.number.precision(.integerLength(2)))
+            let hundredsOfSeconds = (Int(showTime * 100) % 100).formatted(.number.precision(.integerLength(2)))
+            finalTimeLabel.text = "\(minutes):\(seconds).\(hundredsOfSeconds)"
+        } else {
+            let minutes = String(format: "%02d", Int(showTime / 60))
+            let seconds = String(format: "%02d", Int(showTime) % 60)
+            let hundredsOfSeconds = String(format: "%02d", Int(showTime * 100) % 100)
+            finalTimeLabel.text = "\(minutes):\(seconds).\(hundredsOfSeconds)"
+        }
     }
     @objc func timerActionForLap() {
         let timeFromEnd = Date()
         let showTime = timeForLap + timeFromEnd.timeIntervalSince(timeFromStartForLap)
-        //      let minutes = String(format: "%02d", Int(showTime / 60))
-        //      let second = String(format: "%02d", Int(showTime) % 60)
-        // iOS 15
-        let minutes = Int(showTime/60).formatted(.number.precision(.integerLength(2)))
-        let seconds = (Int(showTime) % 60).formatted(.number.precision(.integerLength(2)))
-        let hundredsOfSeconds = (Int(showTime * 100) % 100) .formatted(.number.precision(.integerLength(2)))
-        showRunningLapTimeString = "\(minutes):\(seconds).\(hundredsOfSeconds)"
-        headerLapTimeLabel.text = showRunningLapTimeString
-        headerLapNumberLabel.text = "Lap \(lapArray.count + 1)"
+        if #available(iOS 15, *){
+            let minutes = Int(showTime/60).formatted(.number.precision(.integerLength(2)))
+            let seconds = (Int(showTime) % 60).formatted(.number.precision(.integerLength(2)))
+            let hundredsOfSeconds = (Int(showTime * 100) % 100) .formatted(.number.precision(.integerLength(2)))
+            showRunningLapTimeString = "\(minutes):\(seconds).\(hundredsOfSeconds)"
+            headerLapTimeLabel.text = showRunningLapTimeString
+            headerLapNumberLabel.text = "Lap \(lapArray.count + 1)"
+        } else {
+            let minutes = String(format: "%02d", Int(showTime / 60))
+            let seconds = String(format: "%02d", Int(showTime) % 60)
+            let hundredsOfSeconds = String(format: "%02d", Int(showTime * 100) % 100)
+            showRunningLapTimeString = "\(minutes):\(seconds).\(hundredsOfSeconds)"
+            headerLapTimeLabel.text = showRunningLapTimeString
+            headerLapNumberLabel.text = "Lap \(lapArray.count + 1)"
+        }
     }
     
     override func viewDidLoad() {
@@ -112,8 +164,6 @@ class StopWatchViewController: UIViewController {
         lapOrResetButton.isEnabled = false
         headerLapNumberLabel.text = ""
         headerLapTimeLabel.text = ""
-        
-        
     }
     
     @IBAction func tapStartOrStop(_ sender: UIButton) {
@@ -133,6 +183,7 @@ class StopWatchViewController: UIViewController {
         }
     }
     
+//    @available( iOS 15,*)
     @IBAction func tapLapOrReset(_ sender: UIButton) {
         if state == "Start" {
             timeForLap = timeForLap + Date().timeIntervalSince(timeFromStartForLap)
@@ -140,13 +191,18 @@ class StopWatchViewController: UIViewController {
             
             // 顯示 lap time 字串
             let showTime = timeForLap
-            //      let minutes = String(format: "%02d", Int(showTime / 60))
-            //      let second = String(format: "%02d", Int(showTime) % 60)
-            // iOS 15
-            let minutes = Int(showTime/60).formatted(.number.precision(.integerLength(2)))
-            let seconds = (Int(showTime) % 60).formatted(.number.precision(.integerLength(2)))
-            let hundredsOfSeconds = (Int(showTime * 100) % 100) .formatted(.number.precision(.integerLength(2)))
-            let showTimeString = "\(minutes):\(seconds).\(hundredsOfSeconds)"
+            var showTimeString = ""
+            if #available(iOS 15, *){
+                let minutes = Int(showTime/60).formatted(.number.precision(.integerLength(2)))
+                let seconds = (Int(showTime) % 60).formatted(.number.precision(.integerLength(2)))
+                let hundredsOfSeconds = (Int(showTime * 100) % 100) .formatted(.number.precision(.integerLength(2)))
+                showTimeString = "\(minutes):\(seconds).\(hundredsOfSeconds)"
+            } else {
+                let minutes = String(format: "%02d", Int(showTime / 60))
+                let seconds = String(format: "%02d", Int(showTime) % 60)
+                let hundredsOfSeconds = String(format: "%02d", Int(showTime * 100) % 100)
+                showTimeString = "\(minutes):\(seconds).\(hundredsOfSeconds)"
+            }
             
             // 更新最大最小值的 lap
             maxLapTime =  timeForLap > maxLapTime ? timeForLap : maxLapTime
@@ -160,6 +216,7 @@ class StopWatchViewController: UIViewController {
             timeFromStartForLap = Date()
             timeForLap = 0
             timerForLap = Timer.scheduledTimer(timeInterval: 0.01, target: self, selector: #selector(timerActionForLap), userInfo: nil, repeats: true)
+            
 //            RunLoop.current.add(timerForLap, forMode: .common)
         } else if state == "Stop"{
             // 初始化 timer 所需
@@ -207,9 +264,7 @@ extension StopWatchViewController: UITableViewDelegate, UITableViewDataSource {
         return lapArray.count
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        print("\(RunLoop.current)")
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "\(StopwatchTableViewCell.self)", for: indexPath) as? StopwatchTableViewCell else { return UITableViewCell() }
-        
         
         let lapInfo = lapArray[indexPath.row]
         cell.lap.text = "Lap \(lapInfo.lapNumber)"
