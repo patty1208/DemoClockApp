@@ -2,7 +2,6 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="j1t-g2-G2T">
     <device id="retina5_9" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -104,14 +103,14 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="CityTableViewCell" id="6wT-tF-TvV" customClass="CityTableViewCell" customModule="DemoClockApp" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="44.666666030883789" width="375" height="41.666667938232422"/>
+                                <rect key="frame" x="0.0" y="44.666666030883789" width="375" height="41"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="6wT-tF-TvV" id="Ham-j6-Co4">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="41.666667938232422"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="41"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="city name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7ah-AE-bvH">
-                                            <rect key="frame" x="15" y="10.000000000000002" width="345" height="21.666666666666671"/>
+                                            <rect key="frame" x="15" y="10" width="345" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -172,7 +171,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cAS-GM-KRw">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cAS-GM-KRw" customClass="TimerView" customModule="DemoClockApp" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="104.99999999999999" width="375" height="189.66666666666663"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AtY-G7-Vex">
@@ -181,36 +180,45 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jDO-x9-Vpc" userLabel="ContainPickerView">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="189.66666666666666"/>
+                                        <subviews>
+                                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZLC-SX-CeO">
+                                                <rect key="frame" x="15" y="0.0" width="345" height="189.66666666666666"/>
+                                                <connections>
+                                                    <outlet property="dataSource" destination="nOx-WV-azA" id="vMj-YW-FLG"/>
+                                                    <outlet property="delegate" destination="nOx-WV-azA" id="gNs-vh-nXV"/>
+                                                </connections>
+                                            </pickerView>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="bottom" secondItem="ZLC-SX-CeO" secondAttribute="bottom" id="X6e-4Q-hls"/>
+                                            <constraint firstItem="ZLC-SX-CeO" firstAttribute="leading" secondItem="jDO-x9-Vpc" secondAttribute="leading" constant="15" id="Y8U-cI-WPG"/>
+                                            <constraint firstItem="ZLC-SX-CeO" firstAttribute="top" secondItem="jDO-x9-Vpc" secondAttribute="top" id="bpK-l8-fzW"/>
+                                            <constraint firstAttribute="trailing" secondItem="ZLC-SX-CeO" secondAttribute="trailing" constant="15" id="nr4-8W-BU6"/>
+                                        </constraints>
+                                    </view>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
+                                    <constraint firstItem="jDO-x9-Vpc" firstAttribute="top" secondItem="cAS-GM-KRw" secondAttribute="top" id="8QZ-bJ-DzC"/>
+                                    <constraint firstAttribute="trailing" secondItem="jDO-x9-Vpc" secondAttribute="trailing" id="8Xe-s1-UgN"/>
+                                    <constraint firstItem="jDO-x9-Vpc" firstAttribute="leading" secondItem="cAS-GM-KRw" secondAttribute="leading" id="RZi-oD-YNP"/>
                                     <constraint firstItem="AtY-G7-Vex" firstAttribute="centerX" secondItem="cAS-GM-KRw" secondAttribute="centerX" id="W8o-NA-Kw4"/>
+                                    <constraint firstAttribute="bottom" secondItem="jDO-x9-Vpc" secondAttribute="bottom" id="YpB-ND-XQM"/>
                                     <constraint firstItem="AtY-G7-Vex" firstAttribute="centerY" secondItem="cAS-GM-KRw" secondAttribute="centerY" id="n7S-W0-L1f"/>
                                 </constraints>
-                            </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jDO-x9-Vpc" userLabel="ContainPickerView">
-                                <rect key="frame" x="0.0" y="104.99999999999999" width="375" height="189.66666666666663"/>
-                                <subviews>
-                                    <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZLC-SX-CeO">
-                                        <rect key="frame" x="15" y="0.0" width="345" height="189.66666666666666"/>
-                                        <connections>
-                                            <outlet property="dataSource" destination="nOx-WV-azA" id="vMj-YW-FLG"/>
-                                            <outlet property="delegate" destination="nOx-WV-azA" id="gNs-vh-nXV"/>
-                                        </connections>
-                                    </pickerView>
-                                </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <constraints>
-                                    <constraint firstAttribute="bottom" secondItem="ZLC-SX-CeO" secondAttribute="bottom" id="X6e-4Q-hls"/>
-                                    <constraint firstItem="ZLC-SX-CeO" firstAttribute="leading" secondItem="jDO-x9-Vpc" secondAttribute="leading" constant="15" id="Y8U-cI-WPG"/>
-                                    <constraint firstItem="ZLC-SX-CeO" firstAttribute="top" secondItem="jDO-x9-Vpc" secondAttribute="top" id="bpK-l8-fzW"/>
-                                    <constraint firstAttribute="trailing" secondItem="ZLC-SX-CeO" secondAttribute="trailing" constant="15" id="nr4-8W-BU6"/>
-                                </constraints>
+                                <connections>
+                                    <outlet property="containPickerView" destination="jDO-x9-Vpc" id="bvF-Ln-ZTX"/>
+                                    <outlet property="countdownLabel" destination="AtY-G7-Vex" id="Hf0-Kd-2As"/>
+                                    <outlet property="countdownTimePickerView" destination="ZLC-SX-CeO" id="k1Z-M1-kXl"/>
+                                </connections>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="hU3-nY-o2j">
                                 <rect key="frame" x="15" y="364.66666666666669" width="345" height="184.33333333333331"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="150" translatesAutoresizingMaskIntoConstraints="NO" id="sNh-bu-i6H">
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="150" translatesAutoresizingMaskIntoConstraints="NO" id="sNh-bu-i6H" customClass="TimerButtonsStackView" customModule="DemoClockApp" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="345" height="97.333333333333329"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sgd-eE-teY">
@@ -250,6 +258,10 @@
                                                 </connections>
                                             </button>
                                         </subviews>
+                                        <connections>
+                                            <outlet property="cancelButton" destination="sgd-eE-teY" id="bUH-FD-dhg"/>
+                                            <outlet property="startPauseResumeButton" destination="hdS-q8-w9D" id="Wzd-Lo-6iO"/>
+                                        </connections>
                                     </stackView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OhH-KH-92P">
                                         <rect key="frame" x="0.0" y="127.33333333333331" width="345" height="57"/>
@@ -317,12 +329,8 @@
                         <viewLayoutGuide key="safeArea" id="7An-FM-f4e"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="jDO-x9-Vpc" secondAttribute="trailing" id="DpX-EC-cY5"/>
-                            <constraint firstItem="hU3-nY-o2j" firstAttribute="top" secondItem="jDO-x9-Vpc" secondAttribute="bottom" constant="70" id="Gq1-xb-gZ2"/>
-                            <constraint firstItem="jDO-x9-Vpc" firstAttribute="leading" secondItem="ClU-VQ-pDa" secondAttribute="leading" id="Gsp-Zh-egW"/>
                             <constraint firstItem="7An-FM-f4e" firstAttribute="trailing" secondItem="hU3-nY-o2j" secondAttribute="trailing" constant="15" id="Mti-Wt-77Z"/>
                             <constraint firstItem="hU3-nY-o2j" firstAttribute="top" secondItem="cAS-GM-KRw" secondAttribute="bottom" constant="70" id="Omw-7T-hmx"/>
-                            <constraint firstItem="jDO-x9-Vpc" firstAttribute="top" secondItem="ClU-VQ-pDa" secondAttribute="top" constant="105" id="Q4x-xp-61Q"/>
                             <constraint firstItem="hU3-nY-o2j" firstAttribute="leading" secondItem="7An-FM-f4e" secondAttribute="leading" constant="15" id="VnR-kt-tNO"/>
                             <constraint firstItem="7An-FM-f4e" firstAttribute="bottom" secondItem="hU3-nY-o2j" secondAttribute="bottom" constant="180" id="chz-iG-o5J"/>
                             <constraint firstItem="cAS-GM-KRw" firstAttribute="leading" secondItem="7An-FM-f4e" secondAttribute="leading" id="cu8-Np-pBh"/>
@@ -332,12 +340,9 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="計時器" image="timer" catalog="system" id="lN1-xO-RUS"/>
                     <connections>
-                        <outlet property="cancelButton" destination="sgd-eE-teY" id="JkC-o5-Xq9"/>
-                        <outlet property="containPickerView" destination="jDO-x9-Vpc" id="iBz-ia-def"/>
-                        <outlet property="countdownLabel" destination="AtY-G7-Vex" id="wY4-RE-5q2"/>
-                        <outlet property="countdownTimePickerView" destination="ZLC-SX-CeO" id="eSe-Bf-1SG"/>
                         <outlet property="ringtonesLabel" destination="Luv-1G-sP3" id="gwS-Cf-oG4"/>
-                        <outlet property="startPauseResumeButton" destination="hdS-q8-w9D" id="gUB-4Z-lDt"/>
+                        <outlet property="timerButtonsStackView" destination="sNh-bu-i6H" id="1Ym-DH-LVk"/>
+                        <outlet property="timerView" destination="cAS-GM-KRw" id="lhY-MU-EiF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qaC-T2-HeB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -359,14 +364,14 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="SoundTableViewCell" id="Npw-Jb-dsd" customClass="SoundTableViewCell" customModule="DemoClockApp" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="44.666666030883789" width="375" height="40.666667938232422"/>
+                                <rect key="frame" x="0.0" y="44.666666030883789" width="375" height="41.333332061767578"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Npw-Jb-dsd" id="mKR-94-TJI">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="40.666667938232422"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="41.333332061767578"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="鈴聲名字" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="taq-sz-XVI">
-                                            <rect key="frame" x="10" y="10.000000000000002" width="355" height="20.666666666666671"/>
+                                            <rect key="frame" x="10" y="9.9999999999999982" width="355" height="21.333333333333329"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -998,14 +1003,14 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="RepeatDayTableViewCell" id="EDt-XR-Lvb" customClass="RepeatDayTableViewCell" customModule="DemoClockApp" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="44.666666030883789" width="375" height="41.333332061767578"/>
+                                <rect key="frame" x="0.0" y="44.666666030883789" width="375" height="40.666667938232422"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="EDt-XR-Lvb" id="6Vt-Np-dfR">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="41.333332061767578"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="40.666667938232422"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="星期" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GeU-hl-Yhh">
-                                            <rect key="frame" x="10" y="9.9999999999999982" width="355" height="21.333333333333329"/>
+                                            <rect key="frame" x="10" y="10.000000000000002" width="355" height="20.666666666666671"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -1104,14 +1109,14 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="SoundTableViewCell" id="YGe-nz-Z3F" customClass="SoundTableViewCell" customModule="DemoClockApp" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="44.666666030883789" width="375" height="40.666667938232422"/>
+                                <rect key="frame" x="0.0" y="44.666666030883789" width="375" height="41.333332061767578"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="YGe-nz-Z3F" id="nfu-vC-fyv">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="40.666667938232422"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="41.333332061767578"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="鈴聲名字" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rGp-PV-uEz">
-                                            <rect key="frame" x="10" y="10.000000000000002" width="355" height="20.666666666666671"/>
+                                            <rect key="frame" x="10" y="9.9999999999999982" width="355" height="21.333333333333329"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
