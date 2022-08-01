@@ -7,90 +7,48 @@
 
 import UIKit
 
-class StopWatchViewController: UIViewController {    
+class StopWatchViewController: UIViewController {
     @IBOutlet weak var finalTimeLabel: UILabel!{
         didSet {
             finalTimeLabel.font = UIFont.monospacedDigitSystemFont(ofSize:  finalTimeLabel!.font.pointSize, weight: UIFont.Weight.light)
         }
     }
+    @IBOutlet weak var stopwatchButtonsStackView: StopwatchButtonsStackView!
     @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var startOrStopButton: UIButton!{
-        didSet {
-            if #available(iOS 15, *){
-            startOrStopButton.configurationUpdateHandler = {
-                button in
-                let alpha = button.isHighlighted ? 0.4 : 0.8
-                button.configuration?.background.backgroundColor = self.state == "Stop" ? UIColor.getCustomGreenColor(alpha: alpha) : UIColor.getRedColor(alpha: alpha)
-                button.configuration?.attributedTitle?.foregroundColor = self.state == "Stop" ? UIColor.getDarkGreenColor() :  UIColor.getDarkRedColor()
-                }
-            } else {
-                startOrStopButton.layer.cornerRadius = startOrStopButton.bounds.width/2
-                let alpha = startOrStopButton.isHighlighted ? 0.4 : 0.8
-                startOrStopButton.layer.backgroundColor = self.state == "Stop" ? UIColor.getCustomGreenColor(alpha: alpha).cgColor : UIColor.getRedColor(alpha: alpha).cgColor
-            }
-        }
-    }
-    @IBOutlet weak var lapOrResetButton: UIButton!{
-        didSet {
-            if #available(iOS 15, *){
-                lapOrResetButton.configurationUpdateHandler = {
-                    button in
-                    let alpha = button.isHighlighted ? 0.4 : 0.8
-                    button.configuration?.background.backgroundColor = button.isEnabled ? UIColor.getCustomBlueColor(alpha: alpha) : UIColor.getCustomBlueColor(alpha: 0.2)
-                    button.configuration?.attributedTitle?.foregroundColor = button.isEnabled == true ? .darkGray : .systemGray4
-                }
-            } else {
-                lapOrResetButton.layer.cornerRadius = lapOrResetButton.bounds.width/2
-                let alpha = lapOrResetButton.isHighlighted ? 0.4 : 0.8
-                lapOrResetButton.layer.backgroundColor = lapOrResetButton.isEnabled ? UIColor.getCustomBlueColor(alpha: alpha).cgColor : UIColor.getCustomBlueColor(alpha: 0.2).cgColor
-            }
-        }
-    }
-    
-    @IBOutlet weak var headerLapNumberLabel: UILabel!{
-        didSet {
-            headerLapNumberLabel.font = UIFont.monospacedDigitSystemFont(ofSize:  headerLapNumberLabel!.font.pointSize, weight: UIFont.Weight.light)
-        }
-    }
-    @IBOutlet weak var headerLapTimeLabel: UILabel!{
-        didSet {
-            headerLapTimeLabel.font = UIFont.monospacedDigitSystemFont(ofSize:  headerLapTimeLabel!.font.pointSize, weight: UIFont.Weight.light)
-        }
-    }
-    @IBOutlet weak var headerSeperateView: UIView!
+    @IBOutlet weak var headerView: HeaderView!
     
     var state = "Stop" {
         didSet {
-            startOrStopButton.setTitle(self.state == "Start" ? "Stop" : "Start", for: .normal)
-            lapOrResetButton.setTitle(self.state == "Start" ? "Lap" : "Reset", for: .normal)
+            stopwatchButtonsStackView.startOrStopButton.setTitle(self.state == "Start" ? "Stop" : "Start", for: .normal)
+            stopwatchButtonsStackView.lapOrResetButton.setTitle(self.state == "Start" ? "Lap" : "Reset", for: .normal)
         
             
             if #available(iOS 15, *){
-                lapOrResetButton.configurationUpdateHandler = {
+                stopwatchButtonsStackView.lapOrResetButton.configurationUpdateHandler = {
                     button in
                     let alpha = button.isHighlighted ? 0.4 : 0.8
                     button.configuration?.background.backgroundColor = button.isEnabled ? UIColor.getCustomBlueColor(alpha: alpha) : UIColor.getCustomBlueColor(alpha: 0.2)
                     button.configuration?.attributedTitle?.foregroundColor = button.isEnabled == true ? .darkGray : .systemGray4
                 }
             } else {
-                lapOrResetButton.layer.cornerRadius = lapOrResetButton.bounds.width/2
-                let alpha = lapOrResetButton.isHighlighted ? 0.4 : 0.8
-                lapOrResetButton.layer.backgroundColor = lapOrResetButton.isEnabled ? UIColor.getCustomBlueColor(alpha: alpha).cgColor : UIColor.getCustomBlueColor(alpha: 0.2).cgColor
-                lapOrResetButton.setTitleColor(lapOrResetButton.isEnabled == true ? .darkGray : .systemGray4, for: .normal)
+                stopwatchButtonsStackView.lapOrResetButton.layer.cornerRadius = stopwatchButtonsStackView.lapOrResetButton.bounds.width/2
+                let alpha = stopwatchButtonsStackView.lapOrResetButton.isHighlighted ? 0.4 : 0.8
+                stopwatchButtonsStackView.lapOrResetButton.layer.backgroundColor = stopwatchButtonsStackView.lapOrResetButton.isEnabled ? UIColor.getCustomBlueColor(alpha: alpha).cgColor : UIColor.getCustomBlueColor(alpha: 0.2).cgColor
+                stopwatchButtonsStackView.lapOrResetButton.setTitleColor(stopwatchButtonsStackView.lapOrResetButton.isEnabled == true ? .darkGray : .systemGray4, for: .normal)
             }
             
             if #available(iOS 15, *){
-            startOrStopButton.configurationUpdateHandler = {
+            stopwatchButtonsStackView.startOrStopButton.configurationUpdateHandler = {
                 button in
                 let alpha = button.isHighlighted ? 0.4 : 0.8
                 button.configuration?.background.backgroundColor = self.state == "Stop" ? UIColor.getCustomGreenColor(alpha: alpha) : UIColor.getRedColor(alpha: alpha)
                 button.configuration?.attributedTitle?.foregroundColor = self.state == "Stop" ? UIColor.getDarkGreenColor() : UIColor.getDarkRedColor()
                 }
             } else {
-                startOrStopButton.layer.cornerRadius = startOrStopButton.bounds.width/2
-                let alpha = startOrStopButton.isHighlighted ? 0.4 : 0.8
-                startOrStopButton.layer.backgroundColor = self.state == "Stop" ? UIColor.getCustomGreenColor(alpha: alpha).cgColor : UIColor.getRedColor(alpha: alpha).cgColor
-                startOrStopButton.setTitleColor(state == "Stop" ? UIColor.getDarkGreenColor() : UIColor.getDarkRedColor(), for: .normal)
+                stopwatchButtonsStackView.startOrStopButton.layer.cornerRadius = stopwatchButtonsStackView.startOrStopButton.bounds.width/2
+                let alpha = stopwatchButtonsStackView.startOrStopButton.isHighlighted ? 0.4 : 0.8
+                stopwatchButtonsStackView.startOrStopButton.layer.backgroundColor = self.state == "Stop" ? UIColor.getCustomGreenColor(alpha: alpha).cgColor : UIColor.getRedColor(alpha: alpha).cgColor
+                stopwatchButtonsStackView.startOrStopButton.setTitleColor(state == "Stop" ? UIColor.getDarkGreenColor() : UIColor.getDarkRedColor(), for: .normal)
             }
             
         }
@@ -137,32 +95,32 @@ class StopWatchViewController: UIViewController {
             let seconds = (Int(showTime) % 60).formatted(.number.precision(.integerLength(2)))
             let hundredsOfSeconds = (Int(showTime * 100) % 100) .formatted(.number.precision(.integerLength(2)))
             showRunningLapTimeString = "\(minutes):\(seconds).\(hundredsOfSeconds)"
-            headerLapTimeLabel.text = showRunningLapTimeString
-            headerLapNumberLabel.text = "Lap \(lapArray.count + 1)"
+            headerView.headerLapTimeLabel.text = showRunningLapTimeString
+            headerView.headerLapNumberLabel.text = "Lap \(lapArray.count + 1)"
         } else {
             let minutes = String(format: "%02d", Int(showTime / 60))
             let seconds = String(format: "%02d", Int(showTime) % 60)
             let hundredsOfSeconds = String(format: "%02d", Int(showTime * 100) % 100)
             showRunningLapTimeString = "\(minutes):\(seconds).\(hundredsOfSeconds)"
-            headerLapTimeLabel.text = showRunningLapTimeString
-            headerLapNumberLabel.text = "Lap \(lapArray.count + 1)"
+            headerView.headerLapTimeLabel.text = showRunningLapTimeString
+            headerView.headerLapNumberLabel.text = "Lap \(lapArray.count + 1)"
         }
     }
-    
+        
     override func viewDidLoad() {
         super.viewDidLoad()
         // 自動推算 row 高度
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = UITableView.automaticDimension
-        lapOrResetButton.isEnabled = false
-        headerLapNumberLabel.text = ""
-        headerLapTimeLabel.text = ""
+        stopwatchButtonsStackView.lapOrResetButton.isEnabled = false
+        headerView.headerLapNumberLabel.text = ""
+        headerView.headerLapTimeLabel.text = ""
     }
     
     @IBAction func tapStartOrStop(_ sender: UIButton) {
         state = state == "Stop" ? "Start" : "Stop"
-        lapOrResetButton.isEnabled = true
-        headerSeperateView.isHidden = false
+        stopwatchButtonsStackView.lapOrResetButton.isEnabled = true
+        headerView.headerSeperateView.isHidden = false
         if state == "Start" {
             timeFromStartForFinal = Date()
             timerForFinal = Timer.scheduledTimer(timeInterval: 0.01, target: self, selector: #selector(timerActionForTotal), userInfo: nil, repeats: true)
@@ -221,16 +179,16 @@ class StopWatchViewController: UIViewController {
             // 更新 lap list
             lapArray = []
             tableView.reloadData()
-            headerSeperateView.isHidden = true
-            headerLapTimeLabel.text = ""
-            headerLapNumberLabel.text = ""
+            headerView.headerSeperateView.isHidden = true
+            headerView.headerLapTimeLabel.text = ""
+            headerView.headerLapNumberLabel.text = ""
             
             // 更新 final time
             finalTimeLabel.text = "00:00.00"
             
             // 更新 button 狀態
-            lapOrResetButton.isEnabled = false
-            lapOrResetButton.setTitle("Lap", for: .normal)
+            stopwatchButtonsStackView.lapOrResetButton.isEnabled = false
+            stopwatchButtonsStackView.lapOrResetButton.setTitle("Lap", for: .normal)
         
         }
         

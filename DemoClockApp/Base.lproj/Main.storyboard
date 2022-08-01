@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="j1t-g2-G2T">
     <device id="retina5_9" orientation="portrait" appearance="light"/>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -103,14 +104,14 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="CityTableViewCell" id="6wT-tF-TvV" customClass="CityTableViewCell" customModule="DemoClockApp" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="44.666666030883789" width="375" height="41"/>
+                                <rect key="frame" x="0.0" y="44.666666030883789" width="375" height="41.333332061767578"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="6wT-tF-TvV" id="Ham-j6-Co4">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="41"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="41.333332061767578"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="city name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7ah-AE-bvH">
-                                            <rect key="frame" x="15" y="10" width="345" height="21"/>
+                                            <rect key="frame" x="15" y="9.9999999999999982" width="345" height="21.333333333333329"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -364,14 +365,14 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="SoundTableViewCell" id="Npw-Jb-dsd" customClass="SoundTableViewCell" customModule="DemoClockApp" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="44.666666030883789" width="375" height="41.333332061767578"/>
+                                <rect key="frame" x="0.0" y="44.666666030883789" width="375" height="41"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Npw-Jb-dsd" id="mKR-94-TJI">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="41.333332061767578"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="41"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="鈴聲名字" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="taq-sz-XVI">
-                                            <rect key="frame" x="10" y="9.9999999999999982" width="355" height="21.333333333333329"/>
+                                            <rect key="frame" x="20" y="10" width="335" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -379,8 +380,8 @@
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="taq-sz-XVI" firstAttribute="top" secondItem="mKR-94-TJI" secondAttribute="top" constant="10" id="288-X5-Zi6"/>
-                                        <constraint firstItem="taq-sz-XVI" firstAttribute="leading" secondItem="mKR-94-TJI" secondAttribute="leading" constant="10" id="GIO-H1-hPH"/>
-                                        <constraint firstAttribute="trailing" secondItem="taq-sz-XVI" secondAttribute="trailing" constant="10" id="ROC-yj-VdX"/>
+                                        <constraint firstItem="taq-sz-XVI" firstAttribute="leading" secondItem="mKR-94-TJI" secondAttribute="leading" constant="20" id="GIO-H1-hPH"/>
+                                        <constraint firstAttribute="trailing" secondItem="taq-sz-XVI" secondAttribute="trailing" constant="20" id="ROC-yj-VdX"/>
                                         <constraint firstAttribute="bottom" secondItem="taq-sz-XVI" secondAttribute="bottom" constant="10" id="ita-EP-mFi"/>
                                     </constraints>
                                 </tableViewCellContentView>
@@ -420,7 +421,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" spacing="150" translatesAutoresizingMaskIntoConstraints="NO" id="iT7-4M-RQr">
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="150" translatesAutoresizingMaskIntoConstraints="NO" id="iT7-4M-RQr" customClass="StopwatchButtonsStackView" customModule="DemoClockApp" customModuleProvider="target">
                                 <rect key="frame" x="15" y="357.33333333333331" width="345" height="97.333333333333314"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Cl-WH-g2X">
@@ -458,6 +459,10 @@
                                         </connections>
                                     </button>
                                 </subviews>
+                                <connections>
+                                    <outlet property="lapOrResetButton" destination="0Cl-WH-g2X" id="byN-zo-EJy"/>
+                                    <outlet property="startOrStopButton" destination="MtW-Kh-eeK" id="5qB-n5-JJX"/>
+                                </connections>
                             </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00.00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l0r-tB-Z2b">
                                 <rect key="frame" x="0.0" y="155.33333333333334" width="375" height="95.666666666666657"/>
@@ -469,7 +474,7 @@
                                 <rect key="frame" x="0.0" y="474.66666666666674" width="375" height="337.33333333333326"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <color key="separatorColor" red="0.60392156860000001" green="0.602715373" blue="0.602715373" alpha="1" colorSpace="calibratedRGB"/>
-                                <view key="tableHeaderView" contentMode="scaleToFill" id="ux2-gv-CeC" userLabel="header">
+                                <view key="tableHeaderView" contentMode="scaleToFill" id="ux2-gv-CeC" userLabel="header" customClass="HeaderView" customModule="DemoClockApp" customModuleProvider="target">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
@@ -510,6 +515,11 @@
                                         <constraint firstAttribute="bottom" secondItem="Y2l-2T-oiM" secondAttribute="bottom" id="eg9-GM-iwG"/>
                                         <constraint firstItem="Y2l-2T-oiM" firstAttribute="top" secondItem="ux2-gv-CeC" secondAttribute="top" id="w2t-rf-1h4"/>
                                     </constraints>
+                                    <connections>
+                                        <outlet property="headerLapNumberLabel" destination="Ffe-QQ-7c2" id="IlV-d6-Fjw"/>
+                                        <outlet property="headerLapTimeLabel" destination="chW-Po-iPW" id="OA3-dq-91v"/>
+                                        <outlet property="headerSeperateView" destination="vSS-a1-dFm" id="JJG-xP-EyS"/>
+                                    </connections>
                                 </view>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="StopwatchTableViewCell" id="3wk-aH-o4N" customClass="StopwatchTableViewCell" customModule="DemoClockApp" customModuleProvider="target">
@@ -577,11 +587,8 @@
                     <tabBarItem key="tabBarItem" title="碼錶" image="stopwatch.fill" catalog="system" id="RnR-WC-8aK"/>
                     <connections>
                         <outlet property="finalTimeLabel" destination="l0r-tB-Z2b" id="Bw5-cu-jti"/>
-                        <outlet property="headerLapNumberLabel" destination="Ffe-QQ-7c2" id="Iw8-pp-Iix"/>
-                        <outlet property="headerLapTimeLabel" destination="chW-Po-iPW" id="G4G-lJ-aVp"/>
-                        <outlet property="headerSeperateView" destination="vSS-a1-dFm" id="rTw-Zm-uGD"/>
-                        <outlet property="lapOrResetButton" destination="0Cl-WH-g2X" id="axs-c7-y3X"/>
-                        <outlet property="startOrStopButton" destination="MtW-Kh-eeK" id="Rtk-pi-GXf"/>
+                        <outlet property="headerView" destination="ux2-gv-CeC" id="mPY-Lr-4ED"/>
+                        <outlet property="stopwatchButtonsStackView" destination="iT7-4M-RQr" id="U61-MU-BG6"/>
                         <outlet property="tableView" destination="nCl-zi-TRj" id="TE4-xA-6It"/>
                     </connections>
                 </viewController>
@@ -1003,14 +1010,14 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="RepeatDayTableViewCell" id="EDt-XR-Lvb" customClass="RepeatDayTableViewCell" customModule="DemoClockApp" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="44.666666030883789" width="375" height="40.666667938232422"/>
+                                <rect key="frame" x="0.0" y="44.666666030883789" width="375" height="41"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="EDt-XR-Lvb" id="6Vt-Np-dfR">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="40.666667938232422"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="41"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="星期" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GeU-hl-Yhh">
-                                            <rect key="frame" x="10" y="10.000000000000002" width="355" height="20.666666666666671"/>
+                                            <rect key="frame" x="10" y="10" width="355" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -1109,14 +1116,14 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="SoundTableViewCell" id="YGe-nz-Z3F" customClass="SoundTableViewCell" customModule="DemoClockApp" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="44.666666030883789" width="375" height="41.333332061767578"/>
+                                <rect key="frame" x="0.0" y="44.666666030883789" width="375" height="41.666667938232422"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="YGe-nz-Z3F" id="nfu-vC-fyv">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="41.333332061767578"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="41.666667938232422"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="鈴聲名字" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rGp-PV-uEz">
-                                            <rect key="frame" x="10" y="9.9999999999999982" width="355" height="21.333333333333329"/>
+                                            <rect key="frame" x="10" y="10.000000000000002" width="355" height="21.666666666666671"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
