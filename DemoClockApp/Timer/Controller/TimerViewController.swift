@@ -204,7 +204,7 @@ extension TimerViewController: UIPickerViewDataSource, UIPickerViewDelegate {
     }
     // MARK: - pickerView
     func updateCountdownLabelFromPickerView(){
-        // 依 pickerview 選取更新 countdownLabel
+        // 依 pickerview 選取更新倒數計時 countdownInterval 和更新 countdownLabel
         let hour = timerView.countdownTimePickerView.selectedRow(inComponent: 0)
         let min = timerView.countdownTimePickerView.selectedRow(inComponent: 1)
         let sec = timerView.countdownTimePickerView.selectedRow(inComponent: 2)
