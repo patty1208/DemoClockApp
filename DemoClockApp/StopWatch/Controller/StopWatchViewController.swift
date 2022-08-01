@@ -72,41 +72,7 @@ class StopWatchViewController: UIViewController {
     var minLapTime: TimeInterval = TimeInterval(Int.max)
     var lapArray: [LapTime] = []
     
-    @objc func timerActionForTotal() {
-        let timeFromEnd = Date()
-        let showTime = timeForFinal + timeFromEnd.timeIntervalSince(timeFromStartForFinal)
-        if #available(iOS 15, *){
-            let minutes = Int(showTime/60).formatted(.number.precision(.integerLength(2)))
-            let seconds = (Int(showTime) % 60).formatted(.number.precision(.integerLength(2)))
-            let hundredsOfSeconds = (Int(showTime * 100) % 100).formatted(.number.precision(.integerLength(2)))
-            finalTimeLabel.text = "\(minutes):\(seconds).\(hundredsOfSeconds)"
-        } else {
-            let minutes = String(format: "%02d", Int(showTime / 60))
-            let seconds = String(format: "%02d", Int(showTime) % 60)
-            let hundredsOfSeconds = String(format: "%02d", Int(showTime * 100) % 100)
-            finalTimeLabel.text = "\(minutes):\(seconds).\(hundredsOfSeconds)"
-        }
-    }
-    @objc func timerActionForLap() {
-        let timeFromEnd = Date()
-        let showTime = timeForLap + timeFromEnd.timeIntervalSince(timeFromStartForLap)
-        if #available(iOS 15, *){
-            let minutes = Int(showTime/60).formatted(.number.precision(.integerLength(2)))
-            let seconds = (Int(showTime) % 60).formatted(.number.precision(.integerLength(2)))
-            let hundredsOfSeconds = (Int(showTime * 100) % 100) .formatted(.number.precision(.integerLength(2)))
-            showRunningLapTimeString = "\(minutes):\(seconds).\(hundredsOfSeconds)"
-            headerView.headerLapTimeLabel.text = showRunningLapTimeString
-            headerView.headerLapNumberLabel.text = "Lap \(lapArray.count + 1)"
-        } else {
-            let minutes = String(format: "%02d", Int(showTime / 60))
-            let seconds = String(format: "%02d", Int(showTime) % 60)
-            let hundredsOfSeconds = String(format: "%02d", Int(showTime * 100) % 100)
-            showRunningLapTimeString = "\(minutes):\(seconds).\(hundredsOfSeconds)"
-            headerView.headerLapTimeLabel.text = showRunningLapTimeString
-            headerView.headerLapNumberLabel.text = "Lap \(lapArray.count + 1)"
-        }
-    }
-        
+    // MARK: - View controller life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         // 自動推算 row 高度
@@ -117,6 +83,49 @@ class StopWatchViewController: UIViewController {
         headerView.headerLapTimeLabel.text = ""
     }
     
+    // MARK: - Timer
+    @objc func timerActionForTotal() {
+        let timeFromEnd = Date()
+        let showTime = timeForFinal + timeFromEnd.timeIntervalSince(timeFromStartForFinal)
+        finalTimeLabel.text = stringFromTimeInterval(interval: showTime)
+    }
+    @objc func timerActionForLap() {
+        let timeFromEnd = Date()
+        let showTime = timeForLap + timeFromEnd.timeIntervalSince(timeFromStartForLap)
+        headerView.headerLapTimeLabel.text = stringFromTimeInterval(interval: showTime)
+        headerView.headerLapNumberLabel.text = "Lap \(lapArray.count + 1)"
+    }
+    
+    // MARK: - UI
+    func updateUI() {
+        
+        // update button UI
+        stopwatchButtonsStackView.startOrStopButton.setTitle(self.state == "Start" ? "Stop" : "Start", for: .normal)
+        stopwatchButtonsStackView.lapOrResetButton.setTitle(self.state == "Start" ? "Lap" : "Reset", for: .normal)
+        
+        if #available(iOS 15, *){
+        stopwatchButtonsStackView.startOrStopButton.configurationUpdateHandler = {
+            button in
+            let alpha = button.isHighlighted ? 0.4 : 0.8
+            button.configuration?.background.backgroundColor = self.state == "Stop" ? UIColor.getCustomGreenColor(alpha: alpha) : UIColor.getRedColor(alpha: alpha)
+            button.configuration?.attributedTitle?.foregroundColor = self.state == "Stop" ? UIColor.getDarkGreenColor() : UIColor.getDarkRedColor()
+            }
+        } else {
+            let alpha = stopwatchButtonsStackView.startOrStopButton.isHighlighted ? 0.4 : 0.8
+            stopwatchButtonsStackView.startOrStopButton.layer.backgroundColor = self.state == "Stop" ? UIColor.getCustomGreenColor(alpha: alpha).cgColor : UIColor.getRedColor(alpha: alpha).cgColor
+            stopwatchButtonsStackView.startOrStopButton.setTitleColor(state == "Stop" ? UIColor.getDarkGreenColor() : UIColor.getDarkRedColor(), for: .normal)
+        }
+    }
+        
+    func stringFromTimeInterval(interval: TimeInterval) -> String {
+        let time = NSInteger(interval * 100)
+        let hundredsOfSeconds = time % 100
+        let seconds = (time / 100) % 60
+        let minutes = (time / 6000) % 60
+        return String(NSString(format: "%0.2d:%0.2d:%0.2d",minutes,seconds,hundredsOfSeconds))
+     }
+    
+    //MARK: - button action
     @IBAction func tapStartOrStop(_ sender: UIButton) {
         state = state == "Stop" ? "Start" : "Stop"
         stopwatchButtonsStackView.lapOrResetButton.isEnabled = true
@@ -140,27 +149,12 @@ class StopWatchViewController: UIViewController {
             timeForLap = timeForLap + Date().timeIntervalSince(timeFromStartForLap)
             timeForLap = Double(String(format: "%.4f", timeForLap)) ?? timeForLap // 不想要位數過多,想要先四捨五入,再比大小
             
-            // 顯示 lap time 字串
-            let showTime = timeForLap
-            var showTimeString = ""
-            if #available(iOS 15, *){
-                let minutes = Int(showTime/60).formatted(.number.precision(.integerLength(2)))
-                let seconds = (Int(showTime) % 60).formatted(.number.precision(.integerLength(2)))
-                let hundredsOfSeconds = (Int(showTime * 100) % 100) .formatted(.number.precision(.integerLength(2)))
-                showTimeString = "\(minutes):\(seconds).\(hundredsOfSeconds)"
-            } else {
-                let minutes = String(format: "%02d", Int(showTime / 60))
-                let seconds = String(format: "%02d", Int(showTime) % 60)
-                let hundredsOfSeconds = String(format: "%02d", Int(showTime * 100) % 100)
-                showTimeString = "\(minutes):\(seconds).\(hundredsOfSeconds)"
-            }
-            
             // 更新最大最小值的 lap
             maxLapTime =  timeForLap > maxLapTime ? timeForLap : maxLapTime
             minLapTime = timeForLap < minLapTime ? timeForLap : minLapTime
             
             // lap list 更新
-            lapArray.insert(LapTime(lapNumber: lapArray.count + 1, lapTimeForString: showTimeString, laptime: timeForLap), at: 0)
+            lapArray.insert(LapTime(lapNumber: lapArray.count + 1, lapTimeForString: stringFromTimeInterval(interval: timeForLap), laptime: timeForLap), at: 0)
             tableView.reloadData()
             // lap 重新計時
             timerForLap.invalidate()
