@@ -20,9 +20,14 @@ class TimerViewController: UIViewController {
     
     var timer: Timer = Timer()
     var state = State.Cancel
-    var countdownInterval: TimeInterval = 0 // 倒數秒數
+    
+    var countdownInterval: TimeInterval = 0 // 倒數秒數 for label
+    var lastTimeFromTimer: Date = Date() // timer 執行的最後時間, 用於計算剩餘倒數秒數, 避免 timer 因為 app 進入背景不執行
+    
+    var countdownIntervalForNotification: TimeInterval = 0 // 目前剩餘倒數秒數 for notification 不隨著 Timer 減少
+    var timeFromStart: Date = Date() // 按下開始或繼續按鈕的時間, 用於計算剩餘的倒數秒數(透過按下暫停和開始或繼續按鈕的時間差)
+    
     var ringtone: Sound? = Sound.data[0]
-    //    var ringtone: RingtonesList? = RingtonesList.allCases[0]
     
     // MARK: - View controller life cycle
     override func viewDidLoad() {
@@ -38,7 +43,7 @@ class TimerViewController: UIViewController {
         ringtonesLabel.text = ringtone?.soundName
     }
     
-    // 更新按鈕UI依 state
+    // 更新按鈕 UI 依 state
     func updateUI(state: State){
         timerView.containPickerView.isHidden = state == .Cancel ? false : true
         timerButtonsStackView.cancelButton.isEnabled = state == .Cancel ? false : true
@@ -78,28 +83,18 @@ class TimerViewController: UIViewController {
     
     // MARK: - timer
     @objc func timerAction() {
-        countdownInterval -= 1
+        countdownInterval = countdownInterval - Double((Int(Date().timeIntervalSince1970) - Int(lastTimeFromTimer.timeIntervalSince1970)))
+        
         if countdownInterval == -1 {
             self.timer.invalidate()
-            // 跳通知
             print("倒數結束")
             self.state = State.Cancel
-            self.timerFinishNotification()
             updateUI(state: state)
         } else {
             self.timerView.countdownLabel.text = String(stringFromTimeInterval(interval: countdownInterval))
         }
-    }
-    
-    // timer結束的本地推播通知
-    func timerFinishNotification() {
-        let content = UNMutableNotificationContent()
-        content.body = "計時器"
-        content.sound = UNNotificationSound(named: UNNotificationSoundName(rawValue: ringtone?.soundFileFullName ?? Sound.data[0].soundFileFullName))
-        let request = UNNotificationRequest(identifier: "notificationByTimer", content: content, trigger: nil)
-        UNUserNotificationCenter.current().add(request, withCompletionHandler: {error in
-            print("成功建立通知...")
-        })
+        
+        lastTimeFromTimer = Date()
     }
     
     func stringFromTimeInterval(interval: TimeInterval) -> NSString {
@@ -109,6 +104,18 @@ class TimerViewController: UIViewController {
         let hours = (time / 3600)
         return hours == 0 ? NSString(format: "%0.2d:%0.2d",minutes,seconds) : NSString(format: "%0.2d:%0.2d:%0.2d",hours,minutes,seconds)
      }
+    
+    // 推播通知
+    func timerNotification(time: TimeInterval) {
+        let content = UNMutableNotificationContent()
+        content.body = "計時器"
+        content.sound = UNNotificationSound(named: UNNotificationSoundName(rawValue: ringtone?.soundFileFullName ?? Sound.data[0].soundFileFullName))
+        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: time, repeats: false)
+        let request = UNNotificationRequest(identifier: "notificationByTimer", content: content, trigger: trigger)
+        UNUserNotificationCenter.current().add(request, withCompletionHandler: {error in
+            print("成功建立通知...")
+        })
+    }
     
     
     // MARK: - button action
@@ -124,18 +131,28 @@ class TimerViewController: UIViewController {
             state = .Start
         }
         if state == .Start || state == .Resume {
+            lastTimeFromTimer = Date()
             if state == .Start {
                 updateCountdownLabelFromPickerView()
             }
             timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(timerAction), userInfo: nil, repeats: true)
+            timeFromStart = Date()
+            timerNotification(time: countdownIntervalForNotification)
         } else if state == .Pause {
             timer.invalidate()
+            countdownIntervalForNotification = countdownIntervalForNotification - Date().timeIntervalSince(timeFromStart)
+            UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: ["notificationByTimer"])
+            print("移除推播通知")
         }
         updateUI(state: state)
     }
+    
     @IBAction func tapCancelButton(_ sender: UIButton) {
         state = .Cancel
         timer.invalidate()
+        timeFromStart = Date()
+        UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: ["notificationByTimer"])
+        print("移除推播通知")
         updateUI(state: state)
     }
     
@@ -209,6 +226,7 @@ extension TimerViewController: UIPickerViewDataSource, UIPickerViewDelegate {
         let min = timerView.countdownTimePickerView.selectedRow(inComponent: 1)
         let sec = timerView.countdownTimePickerView.selectedRow(inComponent: 2)
         countdownInterval = TimeInterval(hour * 60 * 60 + min * 60 + sec)
+        countdownIntervalForNotification = TimeInterval(hour * 60 * 60 + min * 60 + sec)
         timerView.countdownLabel.text = String(stringFromTimeInterval(interval: countdownInterval))
     }
 }
