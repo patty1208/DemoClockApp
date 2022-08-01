@@ -31,6 +31,14 @@ extension UIColor {
             return UIColor(red: 255/255, green: 147/255, blue: 0/255, alpha: 1)
         }
     }
+    static func getRedColor(alpha: CGFloat) -> UIColor {
+        if alpha < 1 && alpha > 0 {
+            return UIColor(red: 240/255, green: 173/255, blue: 161/255, alpha: alpha)
+        } else {
+            return UIColor(red: 240/255, green: 173/255, blue: 161/255, alpha: 1)
+        }
+    }
+    
     static func getDarkOrangeColor() -> UIColor {
         UIColor(red: 168/255, green: 77/255, blue: 25/255, alpha: 1)
     }
@@ -38,5 +46,7 @@ extension UIColor {
     static func getDarkGreenColor() -> UIColor {
         UIColor(red: 104/255, green: 142/255, blue: 128/255, alpha: 1)
     }
-    
+    static func getDarkRedColor() -> UIColor {
+        UIColor(red: 169/255, green: 36/255, blue: 21/255, alpha: 1)
+    }
 }

@@ -7,14 +7,7 @@
 
 import UIKit
 
-class StopWatchViewController: UIViewController {
-    // color
-    let redCustomColor = UIColor(red: 240/255, green: 173/255, blue: 161/255, alpha: 1)
-    let darkredCustomColor = UIColor(red: 169/255, green: 36/255, blue: 21/255, alpha: 1)
-    let greenCustomColor = UIColor(red: 179/255, green: 198/255, blue: 191/255, alpha: 1)
-    let darkgreenCustomColor = UIColor(red: 104/255, green: 142/255, blue: 128/255, alpha: 1)
-    let blueCustomColor = UIColor(red: 111/255, green: 134/255, blue: 167/255, alpha: 1)
-    
+class StopWatchViewController: UIViewController {    
     @IBOutlet weak var finalTimeLabel: UILabel!{
         didSet {
             finalTimeLabel.font = UIFont.monospacedDigitSystemFont(ofSize:  finalTimeLabel!.font.pointSize, weight: UIFont.Weight.light)
@@ -27,13 +20,13 @@ class StopWatchViewController: UIViewController {
             startOrStopButton.configurationUpdateHandler = {
                 button in
                 let alpha = button.isHighlighted ? 0.4 : 0.8
-                button.configuration?.background.backgroundColor = self.state == "Stop" ? UIColor(red: 179/255, green: 198/255, blue: 191/255, alpha: alpha) : UIColor(red: 240/255, green: 173/255, blue: 161/255, alpha: alpha)
-                button.configuration?.attributedTitle?.foregroundColor = self.state == "Stop" ? self.darkgreenCustomColor : self.darkredCustomColor
+                button.configuration?.background.backgroundColor = self.state == "Stop" ? UIColor.getCustomGreenColor(alpha: alpha) : UIColor.getRedColor(alpha: alpha)
+                button.configuration?.attributedTitle?.foregroundColor = self.state == "Stop" ? UIColor.getDarkGreenColor() :  UIColor.getDarkRedColor()
                 }
             } else {
                 startOrStopButton.layer.cornerRadius = startOrStopButton.bounds.width/2
                 let alpha = startOrStopButton.isHighlighted ? 0.4 : 0.8
-                startOrStopButton.layer.backgroundColor = self.state == "Stop" ? UIColor(red: 179/255, green: 198/255, blue: 191/255, alpha: alpha).cgColor : UIColor(red: 240/255, green: 173/255, blue: 161/255, alpha: alpha).cgColor
+                startOrStopButton.layer.backgroundColor = self.state == "Stop" ? UIColor.getCustomGreenColor(alpha: alpha).cgColor : UIColor.getRedColor(alpha: alpha).cgColor
             }
         }
     }
@@ -43,13 +36,13 @@ class StopWatchViewController: UIViewController {
                 lapOrResetButton.configurationUpdateHandler = {
                     button in
                     let alpha = button.isHighlighted ? 0.4 : 0.8
-                    button.configuration?.background.backgroundColor = button.isEnabled ? UIColor(red: 111/255, green: 134/255, blue: 167/255, alpha: alpha) : UIColor(red: 111/255, green: 134/255, blue: 167/255, alpha: 0.2)
+                    button.configuration?.background.backgroundColor = button.isEnabled ? UIColor.getCustomBlueColor(alpha: alpha) : UIColor.getCustomBlueColor(alpha: 0.2)
                     button.configuration?.attributedTitle?.foregroundColor = button.isEnabled == true ? .darkGray : .systemGray4
                 }
             } else {
                 lapOrResetButton.layer.cornerRadius = lapOrResetButton.bounds.width/2
                 let alpha = lapOrResetButton.isHighlighted ? 0.4 : 0.8
-                lapOrResetButton.layer.backgroundColor = lapOrResetButton.isEnabled ? UIColor(red: 111/255, green: 134/255, blue: 167/255, alpha: alpha).cgColor : UIColor(red: 111/255, green: 134/255, blue: 167/255, alpha: 0.2).cgColor
+                lapOrResetButton.layer.backgroundColor = lapOrResetButton.isEnabled ? UIColor.getCustomBlueColor(alpha: alpha).cgColor : UIColor.getCustomBlueColor(alpha: 0.2).cgColor
             }
         }
     }
@@ -76,13 +69,13 @@ class StopWatchViewController: UIViewController {
                 lapOrResetButton.configurationUpdateHandler = {
                     button in
                     let alpha = button.isHighlighted ? 0.4 : 0.8
-                    button.configuration?.background.backgroundColor = button.isEnabled ? UIColor(red: 111/255, green: 134/255, blue: 167/255, alpha: alpha) : UIColor(red: 111/255, green: 134/255, blue: 167/255, alpha: 0.2)
+                    button.configuration?.background.backgroundColor = button.isEnabled ? UIColor.getCustomBlueColor(alpha: alpha) : UIColor.getCustomBlueColor(alpha: 0.2)
                     button.configuration?.attributedTitle?.foregroundColor = button.isEnabled == true ? .darkGray : .systemGray4
                 }
             } else {
                 lapOrResetButton.layer.cornerRadius = lapOrResetButton.bounds.width/2
                 let alpha = lapOrResetButton.isHighlighted ? 0.4 : 0.8
-                lapOrResetButton.layer.backgroundColor = lapOrResetButton.isEnabled ? UIColor(red: 111/255, green: 134/255, blue: 167/255, alpha: alpha).cgColor : UIColor(red: 111/255, green: 134/255, blue: 167/255, alpha: 0.2).cgColor
+                lapOrResetButton.layer.backgroundColor = lapOrResetButton.isEnabled ? UIColor.getCustomBlueColor(alpha: alpha).cgColor : UIColor.getCustomBlueColor(alpha: 0.2).cgColor
                 lapOrResetButton.setTitleColor(lapOrResetButton.isEnabled == true ? .darkGray : .systemGray4, for: .normal)
             }
             
@@ -90,14 +83,14 @@ class StopWatchViewController: UIViewController {
             startOrStopButton.configurationUpdateHandler = {
                 button in
                 let alpha = button.isHighlighted ? 0.4 : 0.8
-                button.configuration?.background.backgroundColor = self.state == "Stop" ? UIColor(red: 179/255, green: 198/255, blue: 191/255, alpha: alpha) : UIColor(red: 240/255, green: 173/255, blue: 161/255, alpha: alpha)
-                button.configuration?.attributedTitle?.foregroundColor = self.state == "Stop" ? self.darkgreenCustomColor : self.darkredCustomColor
+                button.configuration?.background.backgroundColor = self.state == "Stop" ? UIColor.getCustomGreenColor(alpha: alpha) : UIColor.getRedColor(alpha: alpha)
+                button.configuration?.attributedTitle?.foregroundColor = self.state == "Stop" ? UIColor.getDarkGreenColor() : UIColor.getDarkRedColor()
                 }
             } else {
                 startOrStopButton.layer.cornerRadius = startOrStopButton.bounds.width/2
                 let alpha = startOrStopButton.isHighlighted ? 0.4 : 0.8
-                startOrStopButton.layer.backgroundColor = self.state == "Stop" ? UIColor(red: 179/255, green: 198/255, blue: 191/255, alpha: alpha).cgColor : UIColor(red: 240/255, green: 173/255, blue: 161/255, alpha: alpha).cgColor
-                startOrStopButton.setTitleColor(state == "Stop" ? darkgreenCustomColor : self.darkredCustomColor, for: .normal)
+                startOrStopButton.layer.backgroundColor = self.state == "Stop" ? UIColor.getCustomGreenColor(alpha: alpha).cgColor : UIColor.getRedColor(alpha: alpha).cgColor
+                startOrStopButton.setTitleColor(state == "Stop" ? UIColor.getDarkGreenColor() : UIColor.getDarkRedColor(), for: .normal)
             }
             
         }
@@ -272,11 +265,11 @@ extension StopWatchViewController: UITableViewDelegate, UITableViewDataSource {
         if lapArray.count >= 2 {
             // 有超過兩筆以上判斷 最長lap:紅色,最短lap:綠色
             if lapInfo.laptime >= maxLapTime {
-                cell.lap.textColor = UIColor(red: 169/255, green: 36/255, blue: 21/255, alpha: 1)
-                cell.time.textColor = UIColor(red: 169/255, green: 36/255, blue: 21/255, alpha: 1)
+                cell.lap.textColor = UIColor.getDarkRedColor()
+                cell.time.textColor = UIColor.getDarkRedColor()
             } else if lapInfo.laptime <= minLapTime{
-                cell.lap.textColor = UIColor(red: 104/255, green: 142/255, blue: 128/255, alpha: 1)
-                cell.time.textColor = UIColor(red: 104/255, green: 142/255, blue: 128/255, alpha: 1)
+                cell.lap.textColor = UIColor.getDarkGreenColor()
+                cell.time.textColor = UIColor.getDarkGreenColor()
             } else {
                 cell.lap.textColor = UIColor.darkText
                 cell.time.textColor = UIColor.darkText
