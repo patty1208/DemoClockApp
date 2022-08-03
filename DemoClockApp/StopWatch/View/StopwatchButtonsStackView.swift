@@ -31,6 +31,8 @@ class StopwatchButtonsStackView: UIStackView {
                 lapOrResetButton.layer.cornerRadius = lapOrResetButton.bounds.width/2
                 let alpha = lapOrResetButton.isHighlighted ? 0.4 : 0.8
                 lapOrResetButton.layer.backgroundColor = lapOrResetButton.isEnabled ? UIColor.getCustomBlueColor(alpha: alpha).cgColor : UIColor.getCustomBlueColor(alpha: 0.2).cgColor
+                lapOrResetButton.setTitleColor(.darkGray, for: .normal)
+                lapOrResetButton.setTitleColor(.systemGray4, for: .disabled)
             }
         }
     }

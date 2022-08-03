@@ -25,9 +25,13 @@
 		C977210826E0B1E200A7CF10 /* TimeZoneListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C977210726E0B1E200A7CF10 /* TimeZoneListTableViewController.swift */; };
 		C977210A26E0B2EC00A7CF10 /* TimeZoneListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C977210926E0B2EC00A7CF10 /* TimeZoneListTableViewCell.swift */; };
 		C977210E26E1CB4A00A7CF10 /* StopwatchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C977210D26E1CB4A00A7CF10 /* StopwatchTableViewCell.swift */; };
+		C97A8F902899218300E6FFEB /* LapsTimeInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = C97A8F8F2899218300E6FFEB /* LapsTimeInfo.swift */; };
+		C97A8F92289A23D300E6FFEB /* StopwatchState.swift in Sources */ = {isa = PBXBuildFile; fileRef = C97A8F91289A23D300E6FFEB /* StopwatchState.swift */; };
 		C980655B26E214AF00D72F29 /* StopWatchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C980655A26E214AF00D72F29 /* StopWatchViewController.swift */; };
 		C980656126E2483A00D72F29 /* AlarmTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C980656026E2483A00D72F29 /* AlarmTableViewCell.swift */; };
 		C980656326E2485700D72F29 /* AlarmTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C980656226E2485700D72F29 /* AlarmTableViewController.swift */; };
+		C98886322897BD6F00C50643 /* StopwatchButtonsStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C98886312897BD6F00C50643 /* StopwatchButtonsStackView.swift */; };
+		C98886382897C11E00C50643 /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C98886372897C11E00C50643 /* HeaderView.swift */; };
 		C98990CC27142F5700D319EF /* Ringtones.swift in Sources */ = {isa = PBXBuildFile; fileRef = C98990CB27142F5700D319EF /* Ringtones.swift */; };
 		C98990CE2715719600D319EF /* EditTimerSoundTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C98990CD2715719600D319EF /* EditTimerSoundTableViewController.swift */; };
 		C99F6EE927269F3100D82277 /* CodableCSV in Frameworks */ = {isa = PBXBuildFile; productRef = C99F6EE827269F3100D82277 /* CodableCSV */; };
@@ -65,10 +69,14 @@
 		C977210726E0B1E200A7CF10 /* TimeZoneListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeZoneListTableViewController.swift; sourceTree = "<group>"; };
 		C977210926E0B2EC00A7CF10 /* TimeZoneListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeZoneListTableViewCell.swift; sourceTree = "<group>"; };
 		C977210D26E1CB4A00A7CF10 /* StopwatchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopwatchTableViewCell.swift; sourceTree = "<group>"; };
+		C97A8F8F2899218300E6FFEB /* LapsTimeInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LapsTimeInfo.swift; sourceTree = "<group>"; };
+		C97A8F91289A23D300E6FFEB /* StopwatchState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopwatchState.swift; sourceTree = "<group>"; };
 		C980655A26E214AF00D72F29 /* StopWatchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopWatchViewController.swift; sourceTree = "<group>"; };
 		C980656026E2483A00D72F29 /* AlarmTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmTableViewCell.swift; sourceTree = "<group>"; };
 		C980656226E2485700D72F29 /* AlarmTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmTableViewController.swift; sourceTree = "<group>"; };
-		C98990CB27142F5700D319EF /* Ringtones.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Ringtones.swift; path = Alarm/Ringtones.swift; sourceTree = "<group>"; };
+		C98886312897BD6F00C50643 /* StopwatchButtonsStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopwatchButtonsStackView.swift; sourceTree = "<group>"; };
+		C98886372897C11E00C50643 /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
+		C98990CB27142F5700D319EF /* Ringtones.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ringtones.swift; sourceTree = "<group>"; };
 		C98990CD2715719600D319EF /* EditTimerSoundTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = EditTimerSoundTableViewController.swift; path = DemoClockApp/Timer/Controller/EditTimerSoundTableViewController.swift; sourceTree = SOURCE_ROOT; };
 		C9C7EE9926E07907004F3F93 /* DemoClockApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DemoClockApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C9C7EE9C26E07907004F3F93 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -112,7 +120,6 @@
 			children = (
 				C980656026E2483A00D72F29 /* AlarmTableViewCell.swift */,
 				C9EFB67D26E78A6E0048D46F /* RepeatDayTableViewCell.swift */,
-				C9EFB68326E7B0EB0048D46F /* SoundTableViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -159,6 +166,8 @@
 			isa = PBXGroup;
 			children = (
 				C9F23DA126EF744F00033A9E /* LapTime.swift */,
+				C97A8F8F2899218300E6FFEB /* LapsTimeInfo.swift */,
+				C97A8F91289A23D300E6FFEB /* StopwatchState.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -166,6 +175,8 @@
 		C94B04CE2895554A0035D1B1 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				C98886372897C11E00C50643 /* HeaderView.swift */,
+				C98886312897BD6F00C50643 /* StopwatchButtonsStackView.swift */,
 				C977210D26E1CB4A00A7CF10 /* StopwatchTableViewCell.swift */,
 			);
 			path = View;
@@ -279,6 +290,7 @@
 			children = (
 				C94B04DB289687930035D1B1 /* UIColor+Ext.swift */,
 				C98990CB27142F5700D319EF /* Ringtones.swift */,
+				C9EFB68326E7B0EB0048D46F /* SoundTableViewCell.swift */,
 				C95D03B42742915600343076 /* Ringtones */,
 				C980655F26E2185900D72F29 /* Alarm */,
 				C980655E26E2185000D72F29 /* Timer */,
@@ -384,22 +396,26 @@
 				C9C7EE9D26E07907004F3F93 /* AppDelegate.swift in Sources */,
 				C929C7252722996C00CA0146 /* CityTableViewCell.swift in Sources */,
 				C94B04D1289560E20035D1B1 /* TimerView.swift in Sources */,
+				C98886322897BD6F00C50643 /* StopwatchButtonsStackView.swift in Sources */,
 				C977210A26E0B2EC00A7CF10 /* TimeZoneListTableViewCell.swift in Sources */,
 				C980656326E2485700D72F29 /* AlarmTableViewController.swift in Sources */,
 				C94B04D72896829F0035D1B1 /* State.swift in Sources */,
 				C9C7EE9F26E07907004F3F93 /* SceneDelegate.swift in Sources */,
+				C97A8F92289A23D300E6FFEB /* StopwatchState.swift in Sources */,
 				C980655B26E214AF00D72F29 /* StopWatchViewController.swift in Sources */,
 				C94B04D528961AC00035D1B1 /* TimerButtonsStackView.swift in Sources */,
 				C9EFB68026E7A4E00048D46F /* EditAlarmLabelTableViewController.swift in Sources */,
 				C912E53F26E494A50003E9E9 /* EditAlarmTableViewController.swift in Sources */,
 				C94B04DC289687930035D1B1 /* UIColor+Ext.swift in Sources */,
 				C9EFB68226E7B08F0048D46F /* EditAlarmSoundTableViewController.swift in Sources */,
+				C97A8F902899218300E6FFEB /* LapsTimeInfo.swift in Sources */,
 				C980656126E2483A00D72F29 /* AlarmTableViewCell.swift in Sources */,
 				C9F23DA226EF744F00033A9E /* LapTime.swift in Sources */,
 				C9EFB67E26E78A6E0048D46F /* RepeatDayTableViewCell.swift in Sources */,
 				C9EFB67C26E786E50048D46F /* EditAlarmRepeatDayTableViewController.swift in Sources */,
 				C98990CE2715719600D319EF /* EditTimerSoundTableViewController.swift in Sources */,
 				C9C7EEA726E07907004F3F93 /* DemoClockApp.xcdatamodeld in Sources */,
+				C98886382897C11E00C50643 /* HeaderView.swift in Sources */,
 				C929C7232722976D00CA0146 /* AddWorldClockTableViewController.swift in Sources */,
 				C977210826E0B1E200A7CF10 /* TimeZoneListTableViewController.swift in Sources */,
 				C912E54126E4D3A40003E9E9 /* Alarm.swift in Sources */,
