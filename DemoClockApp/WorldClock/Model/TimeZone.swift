@@ -16,11 +16,13 @@ struct Zone: Codable, Hashable {
     let cityNameByCN: String
     let zoneNameByCN: String
     var countryNameByCN: String {
+        // 透過iso和在地化轉換國家名稱
         return Locale(identifier: "zh_hant_TW").localizedString(forRegionCode: self.iso2) ?? self.iso2
     }
     var diff: String {
         // 時差敘述, ex: 今天 -1小時
-        func dateAndTimeToInt(format: String, zoneID: String, time: Date) -> Int? {
+        // 日期轉換成數值
+        func dateToInt(format: String, zoneID: String, time: Date) -> Int? {
             
             let formatter = DateFormatter()
             formatter.dateFormat = format
@@ -30,14 +32,11 @@ struct Zone: Codable, Hashable {
             return Int(destination)
             
         }
-        // 判斷今天明天昨天以日期, 時差以GMT計算
-        let destinationDate = dateAndTimeToInt(format: "dd", zoneID: self.zoneName, time: Date())
-        let systemDate = dateAndTimeToInt(format: "dd", zoneID: TimeZone.current.identifier, time: Date())
+        // 以日期判斷(今天,明天,昨天), 時差以GMT計算
+        let destinationDate = dateToInt(format: "dd", zoneID: self.zoneName, time: Date())
+        let systemDate = dateToInt(format: "dd", zoneID: TimeZone.current.identifier, time: Date())
         let destinationGMT = self.GMT
         let systemGMT = TimeZone.current.abbreviation()?.replacingOccurrences(of: "GMT", with: "") ?? ""
-//        for i in TimeZone.knownTimeZoneIdentifiers{
-//            print(TimeZone(identifier: i)?.abbreviation())
-//        }
         if let destinationDate = destinationDate,
            let systemDate = systemDate,
            let systemGMT = Int(systemGMT) {
@@ -76,8 +75,9 @@ extension Zone {
         }
         return array
     }
-    //
+    // MARK: - 本地端資料儲存 Document directory
     static let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+
     // 自訂型別編碼後,再寫入 documentDirectory
     static func saveZone(_ timeZoneList: [Zone]) {
         // 編碼
@@ -87,7 +87,7 @@ extension Zone {
         let url = documentsDirectory.appendingPathComponent("zoneList") // 路徑
         try? data?.write(to: url) // 寫入
     }
-    
+
     // 讀取 documentDirectory 再解碼成自訂型別
     static func loadZones() -> [Self]? { // [Self]: Self (大寫的 S) 代表型別 Zone
         // 讀取

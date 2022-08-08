@@ -242,9 +242,9 @@
 		C980655D26E2183900D72F29 /* WorldClock */ = {
 			isa = PBXGroup;
 			children = (
-				C94B04CC289555220035D1B1 /* Controller */,
-				C94B04CB2895551B0035D1B1 /* View */,
 				C94B04CA289555040035D1B1 /* Model */,
+				C94B04CB2895551B0035D1B1 /* View */,
+				C94B04CC289555220035D1B1 /* Controller */,
 			);
 			path = WorldClock;
 			sourceTree = "<group>";
@@ -262,9 +262,9 @@
 		C980655F26E2185900D72F29 /* Alarm */ = {
 			isa = PBXGroup;
 			children = (
-				C94B04C92895549D0035D1B1 /* Controller */,
-				C94B04C8289554940035D1B1 /* View */,
 				C94B04C7289554870035D1B1 /* Model */,
+				C94B04C8289554940035D1B1 /* View */,
+				C94B04C92895549D0035D1B1 /* Controller */,
 			);
 			path = Alarm;
 			sourceTree = "<group>";
@@ -292,10 +292,10 @@
 				C98990CB27142F5700D319EF /* Ringtones.swift */,
 				C9EFB68326E7B0EB0048D46F /* SoundTableViewCell.swift */,
 				C95D03B42742915600343076 /* Ringtones */,
-				C980655F26E2185900D72F29 /* Alarm */,
-				C980655E26E2185000D72F29 /* Timer */,
 				C980655D26E2183900D72F29 /* WorldClock */,
+				C980655F26E2185900D72F29 /* Alarm */,
 				C980655C26E2182300D72F29 /* StopWatch */,
+				C980655E26E2185000D72F29 /* Timer */,
 				C9C7EE9C26E07907004F3F93 /* AppDelegate.swift */,
 				C9C7EE9E26E07907004F3F93 /* SceneDelegate.swift */,
 				C9C7EEA226E07907004F3F93 /* Main.storyboard */,

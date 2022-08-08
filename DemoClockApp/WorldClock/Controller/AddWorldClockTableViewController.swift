@@ -18,16 +18,14 @@ class AddWorldClockTableViewController: UITableViewController {
     var selectedZone: Zone?
     var delegate: AddWorldClockTableViewControllerDelegate?
     
+    // MARK: - View controller life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         let searchController = UISearchController()
         searchController.hidesNavigationBarDuringPresentation = false
         searchController.searchResultsUpdater = self
         searchController.searchBar.delegate = self
         searchController.searchBar.showsCancelButton = true
-//        searchController.searchBar.setValue("New Title", forKey: "cancelButtonText")
-        
         if let cancelButton = searchController.searchBar.value(forKey: "cancelButton") as? UIButton {
             cancelButton.setTitle("取消", for: .normal)
         }
@@ -40,28 +38,23 @@ class AddWorldClockTableViewController: UITableViewController {
     }
     
     // MARK: - Table view data source
-    
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
-    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return filteredZoneList.count
     }
-    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "\(CityTableViewCell.self)", for: indexPath) as? CityTableViewCell else  { return UITableViewCell() }
         let row = indexPath.row
         let zone = filteredZoneList[row]
-        let countryName = zone.countryNameByCN
-        let city = zone.cityNameByCN
-        cell.cityLabel.text = "\(city) (\(countryName))"
+        cell.cityLabel.text = "\(zone.cityNameByCN) (\(zone.countryNameByCN))"
         return cell
     }
     
     // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let cell = sender as? UITableViewCell,
+        if let cell = sender as? CityTableViewCell,
            let indexPath = tableView.indexPath(for: cell) {
             selectedZone = filteredZoneList[indexPath.row]
         }
